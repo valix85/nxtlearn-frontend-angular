@@ -1,0 +1,16 @@
+<div class="container">
+  <h1 class="title">Welcome to {{ title }}</h1>
+
+  <select name="livello">
+    <option>...</option>
+    <option 
+    *ngFor="let level of levels; let idx = index" 
+    [value]="level.id"
+    [selected]="livelloAttivo.id === level.id"
+    >
+     [{{idx}}] -> {{level.descrizione}}
+    </option>>
+  </select>
+
+  <div>{{ levels | json }}</div>
+</div>

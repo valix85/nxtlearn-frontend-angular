@@ -1,0 +1,47 @@
+<div style="min-height:calc(100vh - 58px);"
+  class=" d-flex m-auto col-sm-8 col-md-6 col-lg-4 justify-content-center flex-column align-items-center">
+
+  <div class="container" id="container-register">
+    <div class="row">
+      <div class="col" id="titolo">
+        <h1>NUOVO UTENTE</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="registration">
+          <form method="post" #f="ngForm" (submit)="doRegister(f)" id="registrationForm">
+            <p>Inserisci nome:</p>
+            <div class="form-group">
+              <input type="text" name="nome" placeholder="nome" class="form-control"
+               [ngModel]="formRegistration.nome" required>
+            </div>
+            <p>Inserisci cognome:</p>
+            <div class="form-group">
+              <input type="text" name="cognome" placeholder="cognome" class="form-control" [ngModel]="formRegistration.cognome" required>
+            </div>
+            <p>Inserisci mail:</p>
+            <div class="form-group">
+              <input type="email" name="email" placeholder="email" class="form-control"
+              [ngModel]="formRegistration.email" required email>
+            </div>
+            <p>Inserisci password:</p>
+            <div class="form-group">
+              <input type="password" name="password" placeholder="password" class="form-control"
+              required [ngModel]="formRegistration.password"
+              minlength="4">
+            </div>
+            <br>
+            <div class="text-center">
+              <button type="submit" id="submitRegistrationForm" class="btn btn-primary btn-lg" [disabled]="f.invalid"><span
+                  class="text-bold">REGISTRATI</span></button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
