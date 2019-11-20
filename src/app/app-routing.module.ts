@@ -7,6 +7,7 @@ import { LogoutComponent } from './features/pages/logout/logout.component';
 import { RegisterComponent } from './features/pages/register/register.component';
 import { GuidaComponent } from './features/pages/guida/guida.component';
 import { GuideComponent } from './features/pages/guide/guide.component';
+import { GuidaGuard } from './features/pages/guida/guida.guard';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -15,7 +16,7 @@ const routes: Routes = [
   {path: 'logout', component: LogoutComponent},
   {path: 'about', component: AboutComponent},
   {path: 'guide', component: GuideComponent},
-  {path: 'guida/:id', component: GuidaComponent} // todo canActivate
+  {path: 'guida/:id', component: GuidaComponent, canActivate: [GuidaGuard] } // todo canActivate
 
 ];
 

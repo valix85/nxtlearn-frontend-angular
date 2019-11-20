@@ -20,7 +20,7 @@ export class GuidaComponent implements OnInit {
   scaricaDatiGuida(id: string) {
     this.guidaService.get(id).subscribe(
       risp => this.guida = risp,
-      err => console.error(err)
+      err => console.error('ERRORE')
     );
   }
 

@@ -13,32 +13,28 @@ export class AuthService {
 
   data: Auth;
   error: any;
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) {
+    this.setSession();
+  }
 
   login(user: string, pwd: string) {
     this.error = null;
-
-    const fd = new FormData();
-    fd.append('utente', user);
-    fd.append('pwd', pwd);
-
-    const params = new HttpParams();
-    params
+    //const fd = new FormData();
+    //fd.append('utente', user);
+    //fd.append('pwd', pwd);
+    const params = new HttpParams()
       .set('utente', user)
       .set('pwd', pwd);
-
     const headers = new HttpHeaders()
-      .set('Content-type', 'application/form-data')
+      .set('Content-type', 'application/x-www-form-urlencoded')
       .set('authorization', 'Basic ' + btoa(user + ':' + pwd) );
-
     return this.http.post<Observable<Auth>>(
       env.url + '/login',
-      fd/*,
-
+      params,
       {
         headers,
         withCredentials: true
-      }*/
+      }
       )
        .pipe(
          map(risp => {
@@ -46,6 +42,8 @@ export class AuthService {
            utente.username = user;
            utente.basicAuth = 'Basic ' + btoa(user + ':' + pwd);
            localStorage.setItem('nxtLogged', JSON.stringify(utente));
+           this.data = utente;
+           // console.log('utente salvato', utente);
            return utente;
          })
        );
@@ -53,13 +51,27 @@ export class AuthService {
 
   logout() {
     this.data = null;
+    localStorage.removeItem('nxtLogged');
     this.router.navigateByUrl('login');
   }
-  setSession() {}
+
+  setSession() {
+    if (localStorage.getItem('nxtLogged') != null) {
+      this.data = JSON.parse(localStorage.getItem('nxtLogged'));
+    }
+  }
+
   destroySession() {}
 
+  getAuth() {
+    if (this.isLogged()) {
+      const tmp: Auth = JSON.parse(localStorage.getItem('nxtLogged'));
+      return tmp.basicAuth;
+    }
+  }
+
   isLogged() {
-    const isAuth = this.data && this.data != null ? true : false;
-    return isAuth;
+      const isAuth = this.data && this.data != null ? true : false;      
+      return isAuth;
   }
 }

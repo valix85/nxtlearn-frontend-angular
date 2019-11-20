@@ -9,10 +9,13 @@
         <li class="nav-item active">
           <a class="nav-link" [routerLink]="['/']" >Home</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="!authService.isLogged()">
           <a class="nav-link" [routerLink]="['/login']"  >Login</a>
-        </li>     
-        <li class="nav-item">
+        </li>
+        <li class="nav-item" *ngIf="authService.isLogged()">
+            <a class="nav-link" [routerLink] (click)="authService.logout()" >Logout</a>
+          </li>
+        <li class="nav-item" *ngIf="authService.isLogged()">
             <a class="nav-link" [routerLink]="['/guida/1']"  >TEST GUIDA 1</a>
         </li>       
       </ul>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { environment as env } from '../../../../environments/environment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'nxt-register',
@@ -17,7 +18,7 @@ export class RegisterComponent implements OnInit {
     password: ''
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
   }
@@ -32,7 +33,11 @@ export class RegisterComponent implements OnInit {
             'Content-Type': 'application/json'
           }
         }).subscribe(
-          (risp)=>{console.log(risp);}
+          (risp)=>{
+            console.log(risp);
+            alert('Registrato con successo');
+            this.router.navigateByUrl('login');
+          }
           , (err)=>{
             alert(err.error.data);
             console.log(err);
