@@ -13,6 +13,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './features/pages/register/register.component';
 import { HttpClientModule } from '@angular/common/http';
+import { GuideComponent } from './features/pages/guide/guide.component';
+import { GuidaComponent } from './features/pages/guida/guida.component';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     LogoutComponent,
     AboutComponent,
-    RegisterComponent
+    RegisterComponent,
+    GuideComponent,
+    GuidaComponent
   ],
   imports: [
     BrowserModule,
