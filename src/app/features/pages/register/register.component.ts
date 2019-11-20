@@ -38,7 +38,7 @@ export class RegisterComponent implements OnInit {
             alert('Registrato con successo');
             this.router.navigateByUrl('login');
           }
-          , (err)=>{
+          , (err) => {
             alert(err.error.data);
             console.log(err);
           }
