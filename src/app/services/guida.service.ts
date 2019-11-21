@@ -12,7 +12,7 @@ export class GuidaService {
   constructor(private http: HttpClient) { }
 
   get(id) {
-    return this.http.get(env.apiUrl + '/guida/' + id);
+    return this.http.get<Guida>(env.apiUrl + '/guida/' + id);
   }
 
   getAll() {
