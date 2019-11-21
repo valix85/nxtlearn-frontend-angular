@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { GuidaService } from 'src/app/services/guida.service';
+import { Guida } from 'src/app/core/model/guida';
 
 @Component({
   selector: 'nxt-guida',
@@ -9,12 +10,20 @@ import { GuidaService } from 'src/app/services/guida.service';
 })
 export class GuidaComponent implements OnInit {
 
-  guida = {};
+  guida: Guida;
 
+
+  @Input() value: Guida;
   constructor(private router: Router, private route: ActivatedRoute, private guidaService: GuidaService ) { }
 
   ngOnInit() {
-    this.scaricaDatiGuida(this.route.snapshot.paramMap.get('id'));
+    if (this.route.snapshot.paramMap.get('id') != null) {
+      this.scaricaDatiGuida(this.route.snapshot.paramMap.get('id'));
+    } else if (this.value != null) {
+      this.guida = this.value;
+    }
+
+    
   }
 
   scaricaDatiGuida(id: string) {

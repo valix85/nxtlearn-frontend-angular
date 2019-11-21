@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {environment as env } from './../../environments/environment';
+import { Guida } from '../core/model/guida';
 
 
 @Injectable({
@@ -12,5 +13,9 @@ export class GuidaService {
 
   get(id) {
     return this.http.get(env.apiUrl + '/guida/' + id);
+  }
+
+  getAll() {
+    return this.http.get<Guida[]>(env.apiUrl + '/guida/');
   }
 }

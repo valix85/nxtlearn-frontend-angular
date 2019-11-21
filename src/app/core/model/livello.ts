@@ -1,4 +1,4 @@
-export class Livello { 
+export class Livello {
     id: number;
     difficolta: number;
     descrizione: string;
