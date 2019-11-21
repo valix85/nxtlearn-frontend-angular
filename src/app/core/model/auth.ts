@@ -1,4 +1,6 @@
 export class Auth {
     username: string;
-    basicAuth: string;
+    basicAuth?: string;
+    expireSession: number;
+    role: string;
 }

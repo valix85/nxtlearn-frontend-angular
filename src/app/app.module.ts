@@ -12,9 +12,10 @@ import { AboutComponent } from './features/pages/about/about.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './features/pages/register/register.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { GuideComponent } from './features/pages/guide/guide.component';
 import { GuidaComponent } from './features/pages/guida/guida.component';
+import { AuthInterceptorService } from './services/auth-interceptor.service';
 
 
 @NgModule({
@@ -36,7 +37,13 @@ import { GuidaComponent } from './features/pages/guida/guida.component';
     NgbModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

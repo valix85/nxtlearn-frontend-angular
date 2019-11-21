@@ -17,18 +17,18 @@ export class AuthService {
     this.setSession();
   }
 
-  login(user: string, pwd: string) {
+  login(user: string, pwd: string): Observable<Auth> {
     this.error = null;
-    //const fd = new FormData();
-    //fd.append('utente', user);
-    //fd.append('pwd', pwd);
+    // const fd = new FormData();
+    // fd.append('utente', user);
+    // fd.append('pwd', pwd);
     const params = new HttpParams()
       .set('utente', user)
       .set('pwd', pwd);
     const headers = new HttpHeaders()
       .set('Content-type', 'application/x-www-form-urlencoded')
       .set('authorization', 'Basic ' + btoa(user + ':' + pwd) );
-    return this.http.post<Observable<Auth>>(
+    return this.http.post<Auth>(
       env.url + '/login',
       params,
       {
@@ -38,8 +38,10 @@ export class AuthService {
       )
        .pipe(
          map(risp => {
+           console.log(risp);
            const utente: Auth = new Auth();
-           utente.username = user;
+           utente.username = risp.username;
+           utente.expireSession = risp.expireSession;
            utente.basicAuth = 'Basic ' + btoa(user + ':' + pwd);
            localStorage.setItem('nxtLogged', JSON.stringify(utente));
            this.data = utente;
@@ -50,9 +52,32 @@ export class AuthService {
   }
 
   logout() {
-    this.data = null;
-    localStorage.removeItem('nxtLogged');
-    this.router.navigateByUrl('login');
+    this.destroySession()
+    /*
+    .pipe(map(err => {
+      console.log(err);
+      return err;
+    }))
+    */
+    /*
+    .pipe(
+      map( err => {
+        console.log('aaaaaa', err);
+        return err;
+  }))
+  */
+    .subscribe(
+      ok => {
+        console.log('logout ok', ok);
+        this.cleanLocalData();
+        this.router.navigateByUrl('login');
+      },
+      err1 => {
+        console.error('errore di logout', err1);
+        this.cleanLocalData();
+        this.router.navigateByUrl('login');
+      }
+    )
   }
 
   setSession() {
@@ -61,7 +86,14 @@ export class AuthService {
     }
   }
 
-  destroySession() {}
+  destroySession() {
+    return this.http.get(env.url + '/logout');
+  }
+
+  cleanLocalData() {
+    this.data = null;
+    localStorage.removeItem('nxtLogged');
+  }
 
   getAuth() {
     if (this.isLogged()) {
@@ -71,7 +103,14 @@ export class AuthService {
   }
 
   isLogged() {
-      const isAuth = this.data && this.data != null ? true : false;      
+      let isAuth = this.data && this.data != null ? true : false;
+      if (isAuth) {
+        // controllo che non sia scaduto
+        if (new Date().getTime() > this.data.expireSession) {
+          isAuth = false;
+          this.cleanLocalData();
+        }
+      }
       return isAuth;
   }
 }
