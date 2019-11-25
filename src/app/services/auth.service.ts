@@ -43,6 +43,7 @@ export class AuthService {
            utente.username = risp.username;
            utente.expireSession = risp.expireSession;
            utente.basicAuth = 'Basic ' + btoa(user + ':' + pwd);
+           utente.role = risp.role;
            localStorage.setItem('nxtLogged', JSON.stringify(utente));
            this.data = utente;
            // console.log('utente salvato', utente);
@@ -77,7 +78,7 @@ export class AuthService {
         this.cleanLocalData();
         this.router.navigateByUrl('login');
       }
-    )
+    );
   }
 
   setSession() {

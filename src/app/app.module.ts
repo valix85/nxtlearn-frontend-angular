@@ -16,6 +16,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { GuideComponent } from './features/pages/guide/guide.component';
 import { GuidaComponent } from './features/pages/guida/guida.component';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
+import { NotFoundComponent } from './features/pages/notfound/notfound.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
     AboutComponent,
     RegisterComponent,
     GuideComponent,
-    GuidaComponent
+    GuidaComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

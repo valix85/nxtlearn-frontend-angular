@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" [routerLink]="['/']" (click)="chiudiMenu()" >Navbar</a>
+    <a class="navbar-brand" [routerLink]="['/']"   >Navbar</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" (click)="isCollapsed = !isCollapsed">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -9,16 +9,16 @@
         <li class="nav-item active" (click)="isCollapsed=!isCollapsed">
           <a class="nav-link" [routerLink]="['/']" >Home</a>
         </li>
-        <li class="nav-item" *ngIf="!authService.isLogged()" (click)="chiudiMenu()">
+        <li class="nav-item" *ngIf="!authService.isLogged()"  >
           <a class="nav-link" [routerLink]="['/login']"  >Login</a>
         </li>
-        <li class="nav-item" *ngIf="authService.isLogged()" (click)="chiudiMenu()">
+        <li class="nav-item" *ngIf="authService.isLogged()"  >
             <a class="nav-link" [routerLink] (click)="authService.logout()" >Logout</a>
           </li>
-        <li class="nav-item" *ngIf="authService.isLogged()" (click)="chiudiMenu()">
+        <li class="nav-item" *ngIf="authService.isLogged()"  >
             <a class="nav-link" [routerLink]="['/guida/1']"  >TEST GUIDA 1</a>
         </li> 
-        <li class="nav-item" (click)="chiudiMenu()">
+        <li class="nav-item"  >
             <a class="nav-link" [routerLink]="['/guide']"  >GUIDE</a>
         </li>
         
@@ -26,18 +26,18 @@
             <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" (click)="menuGuida = !menuGuida" >
               GUIDA
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown" [ngbCollapse]="!menuGuida" (click)="chiudiMenu()">
-              <a class="dropdown-item" [routerLink]="['/guida/add']" *ngIf="authService.isLogged()" (click)="chiudiMenu()">Nuova guida</a>
-              <a class="dropdown-item" [routerLink]="['/guide']" (click)="chiudiMenu()">Tutte le guide</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown" [ngbCollapse]="!menuGuida"  >
+              <a class="dropdown-item" [routerLink]="['/guida/add']" *ngIf="authService.isLogged()"  >Nuova guida</a>
+              <a class="dropdown-item" [routerLink]="['/guide']"  >Tutte le guide</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" [routerLink]="['/guida/remove']" *ngIf="authService.isLogged()" (click)="chiudiMenu()">Cancella guida</a>
+              <a class="dropdown-item" [routerLink]="['/guida/remove']" *ngIf="authService.isLogged()"  >Cancella guida</a>
             </div>
           </li>
 
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <form class="form-inline my-2 my-lg-0" #f="ngForm" (submit)="doSearch(f)">
+        <input class="form-control mr-sm-2" name="txtSearch"  type="search" placeholder="Search" aria-label="Search" required [ngModel]>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"  >CERCA</button>
       </form>
     </div>
   </nav>

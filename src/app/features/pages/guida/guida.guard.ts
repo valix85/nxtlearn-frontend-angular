@@ -17,5 +17,5 @@ export class GuidaGuard implements CanActivate {
     }
     return stato;
   }
-  
+
 }

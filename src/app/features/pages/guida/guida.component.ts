@@ -12,7 +12,6 @@ export class GuidaComponent implements OnInit {
 
   guida: Guida;
 
-
   @Input() value: Guida;
   constructor(private router: Router, private route: ActivatedRoute, private guidaService: GuidaService ) { }
 
@@ -22,8 +21,6 @@ export class GuidaComponent implements OnInit {
     } else if (this.value != null) {
       this.guida = this.value;
     }
-
-    
   }
 
   scaricaDatiGuida(id: string) {
