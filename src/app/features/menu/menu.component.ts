@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { NgForm } from '@angular/forms';
 import { Router, Event, NavigationStart } from '@angular/router';
+
 
 @Component({
   selector: 'nxt-menu',
@@ -14,7 +15,10 @@ export class MenuComponent implements OnInit {
   isCollapsed = false; // comanda apertura navbar in responsive
   menuGuida = false;   // comanda apertura sottomenu guida
 
-  txtSearch;
+  txtSearch = '';
+
+
+  @Output() menuChiuso: EventEmitter<any> = new EventEmitter();
 
   constructor(public authService: AuthService, private router: Router) {
     router.events.subscribe((routerEvent: Event) => {
@@ -35,6 +39,7 @@ export class MenuComponent implements OnInit {
   chiudiMenu() {
     this.isCollapsed = false;
     this.menuGuida = false;
+    this.menuChiuso.emit({componente: 'menu', stato: 'chiuso'});
   }
 
   doSearch(dati: NgForm) {

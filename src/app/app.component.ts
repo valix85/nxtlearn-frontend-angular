@@ -18,4 +18,9 @@ import { Component } from '@angular/core';
 ]*/
 })
 export class AppComponent {
+
+  onAscoltaMenu(value: any): void {
+    console.log(value);
+  }
+
 }
