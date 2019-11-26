@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, HostListener, ViewChildren, QueryList } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { NgForm } from '@angular/forms';
 import { Router, Event, NavigationStart } from '@angular/router';
@@ -44,6 +44,10 @@ export class MenuComponent implements OnInit {
 
   doSearch(dati: NgForm) {
     console.log(dati.form);
+  }
+
+  @HostListener('closeMenu', ['$event']) doClose(evento) {
+    console.log('doClose: ', evento);
   }
 
 }

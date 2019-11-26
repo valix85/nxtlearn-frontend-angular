@@ -30,6 +30,15 @@ export class HomeComponent implements OnInit {
     console.log('OnInit di HomeComponent');
     this.levels = livelli;
     console.info('Livelli: ', this.levels);
+
+    /*
+    // example navigate router
+    this.router.navigate(
+      ['pagina', '10', 'edit'],
+      {queryParams: {param: 'value'}, fragment: 'anchor'}
+    );
+    */
+
   }
 
 }

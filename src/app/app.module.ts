@@ -17,6 +17,8 @@ import { GuideComponent } from './features/pages/guide/guide.component';
 import { GuidaComponent } from './features/pages/guida/guida.component';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { NotFoundComponent } from './features/pages/notfound/notfound.component';
+import { PagelogDirective } from './features/menu/pagelog.directive';
+import { ChiudimenuDirective } from './features/menu/chiudimenu.directive';
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import { NotFoundComponent } from './features/pages/notfound/notfound.component'
     RegisterComponent,
     GuideComponent,
     GuidaComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    PagelogDirective,
+    ChiudimenuDirective
   ],
   imports: [
     BrowserModule,
