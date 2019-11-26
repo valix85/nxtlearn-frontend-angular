@@ -31,7 +31,7 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown" [ngbCollapse]="!menuGuida"  >
               <a class="dropdown-item" [routerLink]="['/guida/add']" *ngIf="authService.isLogged()"  >Nuova guida</a>
-              <a class="dropdown-item" [routerLink]="['/guide']"  >Tutte le guide</a>
+              <a class="dropdown-item" [routerLink]="['/guide']" nxtChiudimenu >Tutte le guide</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" [routerLink]="['/guida/remove']" *ngIf="authService.isLogged()"  >Cancella guida</a>
             </div>
