@@ -1,5 +1,5 @@
-import { Directive, Output, ElementRef, HostListener, HostBinding } from '@angular/core';
-import { EventEmitter } from 'events';
+import { Directive, Output, ElementRef, HostListener, HostBinding, EventEmitter } from '@angular/core';
+
 
 
 @Directive({
@@ -7,10 +7,10 @@ import { EventEmitter } from 'events';
 })
 export class ChiudimenuDirective {
 
-  @Output('closeMenu') closeMenu: EventEmitter = new EventEmitter();
+  @Output('closeMenu') closeMenu: EventEmitter<MouseEvent> = new EventEmitter();
   constructor(private elem: ElementRef) { }
 
-  @HostListener('click') doEmitClose(evento) {
+  @HostListener('click', ['$event']) doEmitClose(evento: MouseEvent) {
     this.closeMenu.emit(evento);
   }
 

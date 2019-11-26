@@ -1,15 +1,15 @@
-import { Component, OnInit, Output, EventEmitter, HostListener, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, HostListener, ViewChildren, QueryList, AfterViewInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { NgForm } from '@angular/forms';
 import { Router, Event, NavigationStart } from '@angular/router';
-
+import { ChiudimenuDirective } from 'src/app/features/menu/chiudimenu.directive';
 
 @Component({
   selector: 'nxt-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
-export class MenuComponent implements OnInit {
+export class MenuComponent implements OnInit, AfterViewInit {
 
 
   isCollapsed = false; // comanda apertura navbar in responsive
@@ -48,6 +48,16 @@ export class MenuComponent implements OnInit {
 
   @HostListener('closeMenu', ['$event']) doClose(evento) {
     console.log('doClose: ', evento);
+  }
+
+
+
+  @ViewChildren(ChiudimenuDirective) menudir!: QueryList<ChiudimenuDirective>;
+  ngAfterViewInit() {
+    // viewChildren is set
+    this.menudir.toArray().forEach( (el: ChiudimenuDirective) => {
+      el.closeMenu.subscribe(c => this.doClose(c));
+    });
   }
 
 }
