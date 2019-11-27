@@ -32,7 +32,7 @@ export class MenuComponent implements OnInit, AfterViewInit {
   checkRouterEvent(evento: Event): void {
     if (evento instanceof NavigationStart) {
       // console.log('prima di cambiare');
-      // this.chiudiMenu(); // inibito per testare l'evento emesso dalla direttiva figlia
+      this.chiudiMenu(); // inibito per testare l'evento emesso dalla direttiva figlia ESEMPIO 1
     }
   }
 
@@ -46,7 +46,9 @@ export class MenuComponent implements OnInit, AfterViewInit {
     console.log(dati.form);
   }
 
-
+  // ESEMPIO 1
+  // ---- INIZIO ESEMPIO DIRETTIVA FIGLIA ----
+  // usata come esempio per evitare di intercettare gli eventi di navigaizone emessi da router module
 
   @ViewChildren(ChiudimenuDirective) menudir!: QueryList<ChiudimenuDirective>;
   ngAfterViewInit() {
@@ -55,11 +57,11 @@ export class MenuComponent implements OnInit, AfterViewInit {
       el.closeMenu.subscribe(c => this.doClose(c));
     });
   }
-
   // metodo a scopo didattico, solo per non perdere l'evento
   doClose(evento) {
     // console.log('doClose: ', evento);
     this.chiudiMenu();
   }
+  // ---- FINE ESEMPIO DIRETTIVA FIGLIA ----
 
 }

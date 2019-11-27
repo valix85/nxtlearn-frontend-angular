@@ -1,6 +1,8 @@
 import { Directive, ElementRef, OnInit, HostListener, Renderer2, HostBinding, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
+// direttiva di esempio, applicare [nxtPagelog]="'yellow'" su un qualunque tag
+
 @Directive({
   selector: '[nxtPagelog]'
 })

@@ -16,7 +16,7 @@ export class AuthInterceptorService implements HttpInterceptor {
     if (this.authService.isLogged()) {
       console.log('utente intercettato loggato');
       req = req.clone({
-        setHeaders: {Authorization: this.authService.getAuth()},
+        setHeaders: {Authorization: 'Bearer ' + this.authService.getAuth()},
         withCredentials: true
       });
     }

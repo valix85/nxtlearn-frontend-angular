@@ -9,6 +9,7 @@ import { GuidaComponent } from './features/pages/guida/guida.component';
 import { GuideComponent } from './features/pages/guide/guide.component';
 import { GuidaGuard } from './features/pages/guida/guida.guard';
 import { NotFoundComponent } from './features/pages/notfound/notfound.component';
+import { NuovaguidaComponent } from './features/pages/guida/nuovaguida/nuovaguida.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'logout', component: LogoutComponent},
   {path: 'about', component: AboutComponent},
   {path: 'guide', component: GuideComponent},
+  {path: 'guida/add', component: NuovaguidaComponent, canActivate: [GuidaGuard] },
   {path: 'guida/:id', component: GuidaComponent, canActivate: [GuidaGuard] },
   {path: '**', component: NotFoundComponent}
 ];

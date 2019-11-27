@@ -1,6 +1,6 @@
 import { Directive, Output, ElementRef, HostListener, HostBinding, EventEmitter } from '@angular/core';
 
-
+// nxtChiudimenu si applica come attributo di vari elementi HTML, il componente padre, attraverso un viewChildren sottoscriverà l'evento che essa emette, intercettandolo eseguirà ciò che vuole
 
 @Directive({
   selector: '[nxtChiudimenu]'

@@ -1,0 +1,46 @@
+<div style="min-height:calc(100vh - 58px);"
+  class=" d-flex m-auto col-sm-8 col-md-6 col-lg-4 justify-content-center flex-column align-items-center">
+  <div class="container-fluid bg-white py-4 shadow-lg rounded"
+  id="container-register">
+    <div class="row">
+      <div class="col" id="titolo">
+        <h1>CREA UNA GUIDA</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="registration">
+          <form method="post" #f="ngForm" (submit)="doCreate(f)" id="registrationForm">
+            <p>Inserisci nome:</p>
+            <div class="form-group">
+              <input type="text" name="nome" placeholder="nome" class="form-control"
+               [ngModel]="formCreaGuida.nome" required>
+            </div>
+            <p>Inserisci descrizione:</p>
+            <div class="form-group">
+              <input type="text" name="descrizione" placeholder="descrizione" class="form-control" [ngModel]="formCreaGuida.descrizione" required>
+            </div>
+            <p>Inserisci Livello id:</p>
+            <div class="form-group">
+              <input type="number" name="number" placeholder="number" class="form-control"
+              [ngModel]="formCreaGuida.livelloId" required>
+            </div>
+            <p>Inserisci imagePath:</p>
+            <div class="form-group">
+              <input type="text" name="imagePath" placeholder="imagePath" class="form-control" [ngModel]="formCreaGuida.imagePath" required>
+            </div>
+            <p>Inserisci url:</p>
+            <div class="form-group">
+              <input type="text" name="url" placeholder="url" class="form-control" [ngModel]="formCreaGuida.url" required>
+            </div>
+            <br>
+            <div class="text-center">
+              <button type="submit" id="submitCreaGuidaForm" class="btn btn-primary btn-lg" [disabled]="f.invalid"><span
+                  class="text-bold">CREA GUIDA</span></button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

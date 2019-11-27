@@ -17,7 +17,7 @@ export class AuthService {
     this.setSession();
   }
 
-  login(user: string, pwd: string): Observable<Auth> {
+  loginBasic(user: string, pwd: string): Observable<Auth> {
     this.error = null;
     // const fd = new FormData();
     // fd.append('utente', user);
@@ -39,34 +39,42 @@ export class AuthService {
        .pipe(
          map(risp => {
            console.log(risp);
+           /*
            const utente: Auth = new Auth();
            utente.username = risp.username;
            utente.expireSession = risp.expireSession;
-           utente.basicAuth = 'Basic ' + btoa(user + ':' + pwd);
+           // utente.basicAuth = 'Basic ' + btoa(user + ':' + pwd);
+           utente.nome = risp.nome
            utente.role = risp.role;
-           localStorage.setItem('nxtLogged', JSON.stringify(utente));
-           this.data = utente;
+           */
+          // risp è già di tipo Auth automaticamente
+           localStorage.setItem('nxtLogged', JSON.stringify(risp));
+           this.data = risp;
            // console.log('utente salvato', utente);
-           return utente;
+           delete risp.token;
+           return risp;
+         })
+       );
+  }
+
+  login(user: string, pwd: string): Observable<Auth> {
+    this.error = null;
+    return this.http.post<Auth>(
+      env.url + '/authenticate',
+      {utente: user, pwd}
+      )
+       .pipe(
+         map(risp => {
+           localStorage.setItem('nxtLogged', JSON.stringify(risp));
+           this.data = risp;
+           delete risp.token;
+           return risp;
          })
        );
   }
 
   logout() {
     this.destroySession()
-    /*
-    .pipe(map(err => {
-      console.log(err);
-      return err;
-    }))
-    */
-    /*
-    .pipe(
-      map( err => {
-        console.log('aaaaaa', err);
-        return err;
-  }))
-  */
     .subscribe(
       ok => {
         console.log('logout ok', ok);
@@ -99,7 +107,8 @@ export class AuthService {
   getAuth() {
     if (this.isLogged()) {
       const tmp: Auth = JSON.parse(localStorage.getItem('nxtLogged'));
-      return tmp.basicAuth;
+      // return tmp.basicAuth;
+      return tmp.token;
     }
   }
 
