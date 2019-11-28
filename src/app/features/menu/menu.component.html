@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" [routerLink]="['/']">Navbar</a>
+  <a class="navbar-brand" [routerLink]="['/']">NXT-LEARN</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
     (click)="isCollapsed = !isCollapsed">
@@ -15,8 +15,13 @@
 
 
       <li class="nav-item" *ngIf="authService.isLogged()">
-        <a class="nav-link" [routerLink]="['/guida/1']">TEST GUIDA 1</a>
+        <a class="nav-link" [routerLink]="['/guida','1']">TEST GUIDA 1</a>
       </li>
+      <li class="nav-item" *ngIf="authService.isLogged()">
+          <a class="nav-link" [routerLink]="['/guida','100']">TEST GUIDA 100</a>
+        </li>
+
+
       <li class="nav-item">
         <a class="nav-link" [routerLink]="['/guide']">GUIDE</a>
       </li>
@@ -24,8 +29,8 @@
 
 
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false" (click)="menuGuida = !menuGuida">
+        <a style="cursor: pointer" class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" (click)="menuGuida = !menuGuida">
           GUIDA
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown" [ngbCollapse]="!menuGuida">
@@ -50,19 +55,29 @@
       </li>
     </ul>
 
-    <div ngbDropdown class="btn-group settings " *ngIf="authService.isLogged()">
-      <button ngbDropdownToggle type="button" id="userDropdown" class="btn btn-light dropdown-toggle"
-        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ciao {{authService.data.nome}}!
-        <span class="fa fa-user-circle"></span>
-        <span class="sr-only">Toggle Dropdown</span>
-      </button>
-      <div ngbDropdownMenu class="dropdown-menu-lg-right" aria-labelledby="userDropdown">
-        <a class="dropdown-item" [routerLink]="['/settings']" *ngIf="authService.isLogged()">Impostazioni utente</a>
-        <a class="dropdown-item" [routerLink]="['/utenti']">Gestione utenti</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" [routerLink] *ngIf="authService.isLogged()" (click)="authService.logout()">Logout</a>
-      </div>
-    </div>
+
+
+
+
+
+
+
+
+    <ul class="navbar-nav" *ngIf="authService.isLogged()">
+      <li class="nav-item dropdown" ngbDropdown display="dynamic" aplacement="bottom-right">
+        <a style="cursor: pointer" class="nav-link dropdown-toggle" id="navbarDropdownLogin" data-toggle="dropdown"
+          role="button" aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>
+          Ciao {{authService.data.nome}}!
+          <span class="fa fa-user-circle"></span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownLogin" ngbDropdownMenu>
+          <a class="dropdown-item" [routerLink]="['/settings']" *ngIf="authService.isLogged()">Impostazioni utente</a>
+          <a class="dropdown-item" [routerLink]="['/utenti']">Gestione utenti</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" [routerLink] *ngIf="authService.isLogged()" (click)="authService.logout()">Logout</a>
+        </div>
+      </li>
+    </ul>
 
   </div>
 </nav>

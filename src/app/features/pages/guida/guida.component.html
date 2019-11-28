@@ -1,7 +1,40 @@
-<div *ngIf="guida">
-<h1>{{guida.nome}}</h1>
-<p>
-  {{guida.descrizione}}
-</p>
-<p class="text-muted">Livello: {{guida.livello.descrizione}}</p>
+<div class="container mt-4">
+<div class="row">
+<div class="col">
+
+
+    <div *ngIf="guida">
+        <h1 class="nomeGuida">{{guida.nome}}</h1>
+        <p class="descrizioneGuida">{{guida.descrizione}}</p>
+        <p class="text-muted"> Livello: {{guida.livello?.descrizione}}</p>
+        <div class="box-capitoli">
+          <h3>Capitoli</h3>
+            <ngb-accordion 
+            #myaccordionvar="ngbAccordion" 
+            closeOthers="true" 
+            type="'success'"
+            (panelChange)="beforeChange($event)"
+            >
+              <ngb-panel *ngFor="let capitolo of guida.capitoli" >               
+                  <ng-template ngbPanelTitle >
+                      <h4>{{capitolo.nome}}</h4>
+                  </ng-template>
+                
+                <ng-template ngbPanelContent >                  
+                  <div *ngFor="let lezione of capitolo.lezioni">
+                    <ul>
+                      <li>
+                        {{lezione.titolo}}
+                      </li>
+                    </ul>
+                  </div>
+                </ng-template>
+              </ngb-panel>
+            </ngb-accordion>
+        </div>
+      </div>
+
+
+</div>
+</div>
 </div>

@@ -1,4 +1,5 @@
 import { Livello } from './livello';
+import { Capitolo } from './capitolo';
 
 export class Guida {
     id: number;
@@ -7,4 +8,5 @@ export class Guida {
     url: string;
     image: string;
     livello: Livello;
+    capitoli: Capitolo[];
 }
