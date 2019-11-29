@@ -1,6 +1,8 @@
 import { Directive, TemplateRef, ViewContainerRef, ElementRef, Input, OnInit, OnChanges, OnDestroy } from '@angular/core';
 import { PermissionType } from './permissionType';
 import { PermissionManagerService } from 'src/app/services/permissionManager.service';
+import { Auth } from 'src/app/core/model/auth';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Directive({
   selector: '[nxtIsGranted]'
@@ -10,7 +12,7 @@ export class IsGrantedDirective implements OnInit, OnChanges, OnDestroy {
   private activeView = false; // mostro o non mostro il componente sul DOM
 
 
-  @Input('nxtIsGrantedPermesso') permesso: PermissionType;
+  @Input('nxtIsGrantedPermesso') permesso: PermissionType; // todo pensare a stringa e valueOf
   @Input('nxtIsGrantedLoggato') loggato: boolean;
 
 
@@ -18,7 +20,8 @@ export class IsGrantedDirective implements OnInit, OnChanges, OnDestroy {
     private templateRef: TemplateRef<any>,
     private viewContainer: ViewContainerRef,
     private elementRef: ElementRef,
-    private permissionManagerService: PermissionManagerService
+    private permissionManagerService: PermissionManagerService,
+    private authService: AuthService
   ) {
     console.log('Direttiva custom invocata');
     // console.log(this.permesso);
@@ -51,11 +54,11 @@ export class IsGrantedDirective implements OnInit, OnChanges, OnDestroy {
     // console.log(num, this.permesso)
     if (this.loggato && !this.activeView) {
       // todo fare controllo del permesso richiesto per la funzionalità
-      if (this.permissionManagerService.isGranted(this.permesso)) {
+      if (this.permissionManagerService.isGranted(this.permesso, this.authService.getRoleAuth())) {
         console.log('ho il permesso');
         this.activeView = true;
         this.viewContainer.createEmbeddedView(this.templateRef);
-      }else {
+      } else {
         console.warn('non ho il permesso');
       }
     } else if (!this.loggato && this.activeView) {

@@ -5,6 +5,7 @@ import { Auth } from '../core/model/auth';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { PermissionManagerService } from './permissionManager.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class AuthService {
 
   data: Auth;
   error: any;
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router, private permissionService: PermissionManagerService) {
     this.setSession();
   }
 
@@ -101,6 +102,7 @@ export class AuthService {
 
   cleanLocalData() {
     this.data = null;
+    this.permissionService.cleanCache();
     localStorage.removeItem('nxtLogged');
   }
 

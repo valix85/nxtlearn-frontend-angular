@@ -9,14 +9,19 @@ import { AuthService } from './auth.service';
     providedIn: 'root'
 })
 export class PermissionManagerService {
-    private permissions: PermissionBase;  // autorizzazioni
-    constructor(private authService: AuthService) { }
 
-    isGranted(permission: PermissionType) {
-        console.log('PERMESSO:' + permission);
-        console.log('1');
-        const authRole = this.authService.getRoleAuth();
-        const permissions = PermissionsFactory.getInstance(authRole).autorizzazioni;
+    constructor(/*private authService: AuthService*/) { }
+
+    private permessiCache: PermissionBase; // autorizzazioni cache
+
+    isGranted(permission: PermissionType, ruolo: string) {
+        const authRole = ruolo;
+        let permissions;
+        if (this.permessiCache) {
+            permissions = this.permessiCache.autorizzazioni;
+        } else {
+            permissions = PermissionsFactory.getInstance(authRole).autorizzazioni;
+        }
         for (const perm of permissions) {
             if (perm === permission) {
                 return true;
@@ -24,4 +29,8 @@ export class PermissionManagerService {
         }
         return false;
     } // end isGranted
+
+    cleanCache() {
+        this.permessiCache = undefined;
+    }
 }
