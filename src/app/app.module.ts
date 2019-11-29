@@ -21,6 +21,7 @@ import { PagelogDirective } from './features/menu/pagelog.directive';
 import { ChiudimenuDirective } from './features/menu/chiudimenu.directive';
 import { NuovaguidaComponent } from './features/pages/guida/nuovaguida/nuovaguida.component';
 import { NuovaguidaurlComponent } from './features/pages/guida/nuovaguidaurl/nuovaguidaurl.component';
+import { IsGrantedDirective } from './features/permission/is-granted.directive';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { NuovaguidaurlComponent } from './features/pages/guida/nuovaguidaurl/nuo
     PagelogDirective,
     ChiudimenuDirective,
     NuovaguidaComponent,
-    NuovaguidaurlComponent
+    NuovaguidaurlComponent,
+    IsGrantedDirective
   ],
   imports: [
     BrowserModule,

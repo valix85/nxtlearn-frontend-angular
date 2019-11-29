@@ -13,18 +13,25 @@
       </li>
 
 
+      <li class="nav-item" *nxtIsGranted="let tmp permesso p.ReadGuida loggato authService.isLogged()">
+        <a class="nav-link" [routerLink]="['/guida','1']">TEST DIRETTIVA</a>
+      </li>
 
+<!-- 
       <li class="nav-item" *ngIf="authService.isLogged()">
         <a class="nav-link" [routerLink]="['/guida','1']">TEST GUIDA 1</a>
       </li>
       <li class="nav-item" *ngIf="authService.isLogged()">
           <a class="nav-link" [routerLink]="['/guida','100']">TEST GUIDA 100</a>
         </li>
+-->
 
 
       <li class="nav-item">
         <a class="nav-link" [routerLink]="['/guide']">GUIDE</a>
       </li>
+
+      
 
 
 

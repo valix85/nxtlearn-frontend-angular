@@ -8,13 +8,13 @@ import { AuthService } from './auth.service';
 export class AuthInterceptorService implements HttpInterceptor {
 
   constructor(private authService: AuthService) {
-    console.log('AuthInterceptor Service creato');
+    // console.log('AuthInterceptor Service creato');
   }
 
   intercept( req: HttpRequest<any>, next: HttpHandler) {
-    console.log('intercettato');
+    // console.log('intercettato');
     if (this.authService.isLogged()) {
-      console.log('utente intercettato loggato');
+      // console.log('utente intercettato loggato');
       req = req.clone({
         setHeaders: {Authorization: 'Bearer ' + this.authService.getAuth()},
         withCredentials: true

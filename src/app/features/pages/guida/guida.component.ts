@@ -26,7 +26,7 @@ export class GuidaComponent implements OnInit, OnChanges {
     }
     */
     this.route.params.subscribe(val => {
-      console.log('params change', val);
+      // console.log('params change', val);
       if (val.id != null) {
         this.scaricaDatiGuida(val.id);
       } else if (this.value != null) {
@@ -35,16 +35,18 @@ export class GuidaComponent implements OnInit, OnChanges {
     });
 
     this.route.url.subscribe(val => {
-      console.log('url change', val);
+      // console.log('url change', val);
     });
 
     this.route.queryParams.subscribe(
-      val => { console.log('queryParams change', val); }
+      val => {
+        // console.log('queryParams change', val); 
+    }
     );
   }
 
   ngOnChanges(value) {
-    console.log('OnChanges detect: ', value);
+    // console.log('OnChanges detect: ', value);
   }
 
   scaricaDatiGuida(id: string) {

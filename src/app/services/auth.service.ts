@@ -112,6 +112,13 @@ export class AuthService {
     }
   }
 
+  getRoleAuth() {
+    if (this.isLogged()) {
+      const tmp: Auth = JSON.parse(localStorage.getItem('nxtLogged'));
+      return tmp.role;
+    }
+  }
+
   isLogged() {
       let isAuth = this.data && this.data != null ? true : false;
       if (isAuth) {

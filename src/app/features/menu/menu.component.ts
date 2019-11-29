@@ -3,6 +3,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { NgForm } from '@angular/forms';
 import { Router, Event, NavigationStart } from '@angular/router';
 import { ChiudimenuDirective } from 'src/app/features/menu/chiudimenu.directive';
+import { PermissionType } from '../permission/permissionType';
 
 @Component({
   selector: 'nxt-menu',
@@ -11,6 +12,7 @@ import { ChiudimenuDirective } from 'src/app/features/menu/chiudimenu.directive'
 })
 export class MenuComponent implements OnInit, AfterViewInit {
 
+  p = PermissionType;
 
   isCollapsed = false; // comanda apertura navbar in responsive
   menuGuida = false;   // comanda apertura sottomenu guida
@@ -63,5 +65,9 @@ export class MenuComponent implements OnInit, AfterViewInit {
     this.chiudiMenu();
   }
   // ---- FINE ESEMPIO DIRETTIVA FIGLIA ----
+
+
+
+
 
 }

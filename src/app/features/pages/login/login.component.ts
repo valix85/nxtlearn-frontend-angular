@@ -50,8 +50,8 @@ export class LoginComponent implements OnInit {
       this.authService.login(form.form.value.utente, form.form.value.pwd)
       .subscribe(
         (risp) => {
-          console.log(risp);
-          console.log('UTENTE LOGGATO');
+          // console.log(risp);
+          // console.log('UTENTE LOGGATO');
           this.router.navigate(['/']);
         },
         (err) => {
