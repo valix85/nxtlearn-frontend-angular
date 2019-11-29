@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Livello } from 'src/app/core/model/livello';
 import { livelli } from 'src/app/core/model/mock/livelli.mock';
+import { GuidaService } from 'src/app/services/guida.service';
+import { Guida } from 'src/app/core/model/guida';
 
 
 @Component({
@@ -12,15 +14,9 @@ import { livelli } from 'src/app/core/model/mock/livelli.mock';
 export class HomeComponent implements OnInit {
 
   title = 'nxtlearn';
-  levels: Livello[];
+  guide: Guida[] = [];
 
-  livelloAttivo: Livello = {
-    id: 2,
-    difficolta: 2,
-    descrizione: 'medio'
-  };
-
-  constructor(private router: Router) {
+  constructor(private router: Router, private guidaService: GuidaService) {
     // durante la creazione
     console.log('costruttore di HomeComponent');
   }
@@ -28,9 +24,6 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     // appena dopo che viene istanziato
     console.log('OnInit di HomeComponent');
-    this.levels = livelli;
-    console.info('Livelli: ', this.levels);
-
     /*
     // example navigate router
     this.router.navigate(
@@ -38,7 +31,8 @@ export class HomeComponent implements OnInit {
       {queryParams: {param: 'value'}, fragment: 'anchor'}
     );
     */
-
-  }
+    this.guidaService.getLatest()
+      .subscribe(risp => this.guide = risp);
+  } // end OnInit
 
 }

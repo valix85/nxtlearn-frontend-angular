@@ -1,6 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
 
+body {
+    
+    --primary: #007B5E;
+}
+
 h1{
-    color:#333;
+    color: #007B5E;
     text-transform: uppercase;
 }
+h2,h3,h4,h5,h6 {
+    color: #007B5E;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #108D6F;
+    border-color: #108D6F;
+    box-shadow: none;
+    outline: none;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #007B5E;
+    border-color: #007B5E;
+}
+
+.btn-primary a {color:#FFF;}

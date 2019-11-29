@@ -53,6 +53,10 @@ export class GuidaService {
     return this.http.get<Guida[]>(env.apiUrl + '/guida/');
   }
 
+  getLatest(){
+    return this.http.get<Guida[]>(env.apiUrl + '/guida/latest');
+  }
+
   /*GESTIONE ERRORI*/
   // https://blog.angular-university.io/rxjs-error-handling/
   errorHandler(error: any) {
