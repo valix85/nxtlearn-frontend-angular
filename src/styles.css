@@ -1,7 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
-body {
-    
+body {    
     --primary: #007B5E;
 }
 
@@ -9,9 +8,12 @@ h1{
     color: #007B5E;
     text-transform: uppercase;
 }
+
 h2,h3,h4,h5,h6 {
     color: #007B5E;
 }
+
+.bold {font-weight: bold;}
 
 .btn-primary:hover,
 .btn-primary:focus {
@@ -27,3 +29,7 @@ h2,h3,h4,h5,h6 {
 }
 
 .btn-primary a {color:#FFF;}
+
+section .section-title {
+    padding: 60px 0;
+}

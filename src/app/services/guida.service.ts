@@ -57,6 +57,10 @@ export class GuidaService {
     return this.http.get<Guida[]>(env.apiUrl + '/guida/latest');
   }
 
+  getByName(name: string): Observable<Guida[]> {
+    return this.http.get<Guida[]>(env.apiUrl + '/guida/search/' + name);
+  }
+
   /*GESTIONE ERRORI*/
   // https://blog.angular-university.io/rxjs-error-handling/
   errorHandler(error: any) {

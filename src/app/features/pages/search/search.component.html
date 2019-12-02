@@ -1,0 +1,23 @@
+<div id="box-guide">
+
+    <section  class="pb-5">
+      <div class="container">
+        
+        <div class="row">
+          <div class="col">
+              <h2 class="section-title text-center ">RISULTATI PER: "{{searchText}}"</h2>
+          </div>
+        </div>
+  
+        <div class="row">
+          <div class="col"
+          *ngIf="guide.length === 0" >
+            <p class="bold text-center">Non sono presenti risultati</p>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let guida of guide">
+            <nxt-guida-card [item]="guida"></nxt-guida-card>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>

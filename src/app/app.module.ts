@@ -22,6 +22,8 @@ import { ChiudimenuDirective } from './features/menu/chiudimenu.directive';
 import { NuovaguidaComponent } from './features/pages/guida/nuovaguida/nuovaguida.component';
 import { NuovaguidaurlComponent } from './features/pages/guida/nuovaguidaurl/nuovaguidaurl.component';
 import { IsGrantedDirective } from './features/permission/is-granted.directive';
+import { SearchComponent } from './features/pages/search/search.component';
+import { GuidaCardComponent } from './features/pages/guida/guida-card/guida-card.component';
 
 
 @NgModule({
@@ -40,7 +42,9 @@ import { IsGrantedDirective } from './features/permission/is-granted.directive';
     ChiudimenuDirective,
     NuovaguidaComponent,
     NuovaguidaurlComponent,
-    IsGrantedDirective
+    IsGrantedDirective,
+    SearchComponent,
+    GuidaCardComponent
   ],
   imports: [
     BrowserModule,

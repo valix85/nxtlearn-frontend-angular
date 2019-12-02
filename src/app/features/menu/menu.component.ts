@@ -44,9 +44,10 @@ export class MenuComponent implements OnInit, AfterViewInit {
     this.menuChiuso.emit({componente: 'menu', stato: 'chiuso'});
   }
 
-  doSearch(dati: NgForm) {
-    console.log(dati.form);
-  }
+  // rimosso perchè si fa su altro componente
+  // doSearch(dati: NgForm) {
+  //   console.log(dati.form);
+  // }
 
   // ESEMPIO 1
   // ---- INIZIO ESEMPIO DIRETTIVA FIGLIA ----
@@ -67,6 +68,12 @@ export class MenuComponent implements OnInit, AfterViewInit {
   // ---- FINE ESEMPIO DIRETTIVA FIGLIA ----
 
 
+
+
+  onKeydown(event) {
+    console.log(event);
+    this.router.navigate(['/guida/search',this.txtSearch]);
+  }
 
 
 
