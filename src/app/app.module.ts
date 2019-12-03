@@ -24,6 +24,8 @@ import { NuovaguidaurlComponent } from './features/pages/guida/nuovaguidaurl/nuo
 import { IsGrantedDirective } from './features/permission/is-granted.directive';
 import { SearchComponent } from './features/pages/search/search.component';
 import { GuidaCardComponent } from './features/pages/guida/guida-card/guida-card.component';
+import { LezioneComponent } from './features/pages/lezione/lezione.component';
+import { SidebarComponent } from './features/sidebar/sidebar.component';
 
 
 @NgModule({
@@ -44,7 +46,9 @@ import { GuidaCardComponent } from './features/pages/guida/guida-card/guida-card
     NuovaguidaurlComponent,
     IsGrantedDirective,
     SearchComponent,
-    GuidaCardComponent
+    GuidaCardComponent,
+    LezioneComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,

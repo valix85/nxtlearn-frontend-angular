@@ -15,15 +15,17 @@
             type="'success'"
             (panelChange)="beforeChange($event)"
             >
-              <ngb-panel *ngFor="let capitolo of guida.capitoli" >               
+              <ngb-panel *ngFor="let capitolo of guida.capitoli"  >               
                   <ng-template ngbPanelTitle >
+                    <div [ngStyle]="{'display':'block','width':'100%', 'background':'red'}"> 
                       <h4>{{capitolo.nome}}</h4>
+                    </div>
                   </ng-template>
                 
                 <ng-template ngbPanelContent >                  
                   <div *ngFor="let lezione of capitolo.lezioni">
-                    <ul>
-                      <li>
+                    <ul class="indice--capitolo">
+                      <li routerLink="/guida/{{guida.id}}/capitolo/{{capitolo.id}}/lezione/{{lezione.id}}" >
                         {{lezione.titolo}}
                       </li>
                     </ul>
@@ -34,7 +36,13 @@
         </div>
       </div>
 
+      <span *nxtIsGranted="let tmp permesso p.AddCapitolo loggato authService.isLogged()"><button class="btn btn-success pull-right" >ADD CAPITOLO</button></span>
+      <button class="btn btn-success pull-right" *nxtIsGranted="let tmp permesso p.AddLezione loggato authService.isLogged()" >ADD LEZIONE</button>
 
+
+
+      
 </div>
 </div>
 </div>
+

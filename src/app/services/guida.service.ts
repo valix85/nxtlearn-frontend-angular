@@ -61,6 +61,10 @@ export class GuidaService {
     return this.http.get<Guida[]>(env.apiUrl + '/guida/search/' + name);
   }
 
+  getShort(id: number) {
+    return this.http.get<Guida>(env.apiUrl + '/guida/short/' + id);
+  }
+
   /*GESTIONE ERRORI*/
   // https://blog.angular-university.io/rxjs-error-handling/
   errorHandler(error: any) {

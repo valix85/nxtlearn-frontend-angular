@@ -6,7 +6,9 @@ export class AdminPermission extends PermissionBase {
     constructor() {
         super();
         this.autorizzazioni = [
-            PermissionType.ReadGuida
+            PermissionType.ReadGuida,
+            PermissionType.AddCapitolo,
+            PermissionType.AddLezione,
         ];
         // console.log(this.autorizzazioni);
     }

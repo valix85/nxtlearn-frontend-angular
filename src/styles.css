@@ -33,3 +33,59 @@ h2,h3,h4,h5,h6 {
 section .section-title {
     padding: 60px 0;
 }
+
+
+
+
+
+/*
+####################################################
+M E D I A  Q U E R I E S
+####################################################
+*/
+ 
+/*
+::::::::::::::::::::::::::::::::::::::::::::::::::::
+Bootstrap 4 breakpoints
+*/
+ 
+/* 
+Extra small devices (portrait phones, less than 576px) 
+No media query since this is the default in Bootstrap because it is "mobile first"
+*/
+/*DEFAULT*/ 
+/*
+    _propertyName makes the browser to ignore this property 
+*/
+body {
+    _background: violet;
+}
+/*CUSTOM BY SIZE*/ 
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {  
+ body {
+     _background: lime;
+ }
+}
+ 
+/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+@media (min-width: 768px) {  
+    body {
+        _background: yellow;
+    }
+}
+ 
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+    body {
+        _background: red;
+    }
+}
+ 
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {  
+    body {
+        _background: blue;
+    }
+    
+}

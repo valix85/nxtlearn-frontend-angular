@@ -19,7 +19,7 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
     this.rotta.params.subscribe(
       par => {
-        console.log(par);
+        // console.log(par);
         this.searchText = par.testo;
         this.doSearch(par.testo);
       }

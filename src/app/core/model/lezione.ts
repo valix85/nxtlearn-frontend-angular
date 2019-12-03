@@ -5,4 +5,6 @@ export class Lezione {
     autore: string;
     contenuto: string;
     allegati: Allegato[];
+    id: number;
+    dataCreazione: Date;
 }

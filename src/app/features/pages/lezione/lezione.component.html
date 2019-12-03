@@ -1,0 +1,12 @@
+<nxt-sidebar [guida]="guida"></nxt-sidebar>
+<div class="container" *ngIf="lezione">
+    <h1 class="titolo-lezione my-4">{{lezione?.titolo}}</h1>
+    <hr class="linea my-2">
+    <div class="autore pl-4">autore: {{lezione?.autore}}</div>
+    <div class="data-creazione pl-4">data pubblicazione: {{lezione?.dataCreazione | date:'d MMM y'}}</div>
+    <hr class="linea">
+    <div *ngIf="lezione.descrizione; else elseBlock">{{lezione.descrizione}}</div>
+    <ng-template #elseBlock>
+        <div class="no-corpo px-4 py-2">dispiace ma la guida non ha ancora un corpo</div>
+    </ng-template>
+</div>

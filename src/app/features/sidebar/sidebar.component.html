@@ -1,0 +1,28 @@
+<div id="sidebar" class="sidebar">
+    <div class="toggle-btn" (click)="toggleSidebar()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div class="sidebar--content">
+        <div class="sidebar--title" *ngIf="guida">
+            <ul class="guida">
+                <li routerLink="/guida/{{guida.id}}">{{guida.nome}}</li>
+            </ul>
+        </div>
+        <ul *ngIf="guida" class="indice">
+            <li *ngFor="let capitolo of guida.capitoli">
+                <div class="nomeCapitolo">{{capitolo.nome}}</div>
+                <div
+                class="titoloLezione"
+                *ngFor="let lezione of capitolo.lezioni"
+                routerLink="/guida/{{guida.id}}/capitolo/{{capitolo.id}}/lezione/{{lezione.id}}"
+                routerLinkActive="attivo"
+                (click)="toggleSidebar()"
+                >
+                    {{lezione.titolo}}
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -2,6 +2,8 @@ import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { GuidaService } from 'src/app/services/guida.service';
 import { Guida } from 'src/app/core/model/guida';
+import { PermissionType } from 'src/app/features/permission/permissionType';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'nxt-guida',
@@ -14,7 +16,11 @@ export class GuidaComponent implements OnInit, OnChanges {
 
   guida: Guida;
 
-  constructor(private router: Router, private route: ActivatedRoute, private guidaService: GuidaService ) { }
+  p = PermissionType;
+
+  constructor(public authService: AuthService, private router: Router, private route: ActivatedRoute, private guidaService: GuidaService ) { }
+
+  
 
   ngOnInit() {
     // fotografia dell'url statico, se cambio i parametri non si riaggiorna
