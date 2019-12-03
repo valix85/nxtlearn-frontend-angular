@@ -15,9 +15,9 @@ export class LezioneComponent implements OnInit {
   lezione: Lezione;
   guida: Guida;
 
-  constructor (
-    private router: Router, 
-    private route: ActivatedRoute, 
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
     private guidaService: GuidaService,
     private lezioneService: LezioneService
     ) { }
