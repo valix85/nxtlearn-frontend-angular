@@ -10,6 +10,19 @@
       </div>
 
       <div class="row">
+        <div class="col">
+
+          <select 
+          [ngModel]="sel1"
+          (ngModelChange)="doIt($event)"          
+          >
+            <option *ngFor="let guida of guide" [ngValue]="guida">{{guida.id}}-{{guida.nome}}</option>
+          </select>
+
+        </div>
+      </div>
+
+      <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let guida of guide | slice:0:9">
           <nxt-guida-card [item]="guida"></nxt-guida-card>
         </div>

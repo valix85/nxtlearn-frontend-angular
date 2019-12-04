@@ -2,25 +2,26 @@ import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { GuidaService } from 'src/app/services/guida.service';
 import { Guida } from 'src/app/core/model/guida';
-import { PermissionType } from 'src/app/features/permission/permissionType';
+import { PermissionType } from 'src/app/features/permission/myPpermissionType';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'nxt-guida',
   templateUrl: './guida.component.html',
-  styleUrls: ['./guida.component.css']
+  styleUrls: ['./guida.component.scss']
 })
 export class GuidaComponent implements OnInit, OnChanges {
 
   @Input() value: Guida;
 
   guida: Guida;
+  isCollapsed: boolean[] = [];
 
   p = PermissionType;
 
   constructor(public authService: AuthService, private router: Router, private route: ActivatedRoute, private guidaService: GuidaService ) { }
 
-  
+  iscritto: boolean = false;
 
   ngOnInit() {
     // fotografia dell'url statico, se cambio i parametri non si riaggiorna
@@ -37,6 +38,7 @@ export class GuidaComponent implements OnInit, OnChanges {
         this.scaricaDatiGuida(val.id);
       } else if (this.value != null) {
         this.guida = this.value;
+        this.isIscritto(this.guida.id);
       }
     });
 
@@ -57,13 +59,35 @@ export class GuidaComponent implements OnInit, OnChanges {
 
   scaricaDatiGuida(id: string) {
     this.guidaService.get(id).subscribe(
-      risp => {this.guida = risp; console.log(risp); },
+      risp => {
+        this.guida = risp;
+        // console.log(risp);
+        this.isIscritto(this.guida.id); },
       err => { console.error('ERRORE'); alert(err); }
     );
   }
 
   beforeChange(evento: Event): void {
     console.log('accordion', evento);
+  }
+
+  iscriviti(idG: number): void {
+    console.log('iscriviti id: ', idG);
+    this.guidaService.iscriviUtente(idG)
+    .subscribe(
+      risp => {
+        this.iscritto = true;
+        alert('Iscrizione effettuata con successo, buona lettura!');
+      }
+      );
+  }
+
+  isIscritto(id: number) {
+    this.guidaService.isIscritto(id)
+    .subscribe(
+      risp => this.iscritto = true,
+      err => this.iscritto = false
+    );
   }
 
 }

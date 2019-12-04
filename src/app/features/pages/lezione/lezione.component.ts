@@ -8,7 +8,7 @@ import { Guida } from 'src/app/core/model/guida';
 @Component({
   selector: 'nxt-lezione',
   templateUrl: './lezione.component.html',
-  styleUrls: ['./lezione.component.css']
+  styleUrls: ['./lezione.component.scss']
 })
 export class LezioneComponent implements OnInit {
 

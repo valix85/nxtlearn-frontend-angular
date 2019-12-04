@@ -20,7 +20,7 @@
                 routerLinkActive="attivo"
                 (click)="toggleSidebar()"
                 >
-                    {{lezione.titolo}}
+                {{getIndice(lezione)+1}} - {{lezione.titolo}}
                 </div>
             </li>
         </ul>

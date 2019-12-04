@@ -1,5 +1,5 @@
 import { Directive, TemplateRef, ViewContainerRef, ElementRef, Input, OnInit, OnChanges, OnDestroy } from '@angular/core';
-import { PermissionType } from './permissionType';
+import { PermissionType } from './myPpermissionType';
 import { PermissionManagerService } from 'src/app/services/permissionManager.service';
 import { Auth } from 'src/app/core/model/auth';
 import { AuthService } from 'src/app/services/auth.service';

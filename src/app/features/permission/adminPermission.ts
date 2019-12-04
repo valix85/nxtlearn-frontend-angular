@@ -1,5 +1,5 @@
 import { PermissionBase } from './PermissionBase';
-import { PermissionType } from './PermissionType';​
+import { PermissionType } from './myPpermissionType';​
 ​
 export class AdminPermission extends PermissionBase {
 

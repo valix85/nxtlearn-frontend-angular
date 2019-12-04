@@ -121,6 +121,12 @@ export class AuthService {
     }
   }
 
+  getCurrentUser() {
+    if (this.isLogged()) {
+      return this.data;
+    }
+  }
+
   isLogged() {
       let isAuth = this.data && this.data != null ? true : false;
       if (isAuth) {

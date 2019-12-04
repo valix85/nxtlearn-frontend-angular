@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { PermissionBase } from '../features/permission/PermissionBase';
-import { PermissionType } from '../features/permission/PermissionType';
+import { PermissionType } from '../features/permission/myPpermissionType';
 import { PermissionsFactory } from '../features/permission/permissionFactory';
 import { AuthService } from './auth.service';
 

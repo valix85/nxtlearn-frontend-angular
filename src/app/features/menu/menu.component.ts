@@ -3,12 +3,12 @@ import { AuthService } from 'src/app/services/auth.service';
 import { NgForm } from '@angular/forms';
 import { Router, Event, NavigationStart } from '@angular/router';
 import { ChiudimenuDirective } from 'src/app/features/menu/chiudimenu.directive';
-import { PermissionType } from '../permission/permissionType';
+import { PermissionType } from '../permission/myPpermissionType';
 
 @Component({
   selector: 'nxt-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.css']
+  styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit, AfterViewInit {
 

@@ -23,6 +23,7 @@
     background: white;
     padding:15px 20px;
     z-index: 99999;
+    transition: all 500 linear;
 }
 #sidebar .toggle-btn span{
     display: block;
@@ -86,5 +87,18 @@
     }
     #sidebar .toggle-btn {
         left: 150px;
+    }
+}
+
+@media (max-width: 768px) {
+    #sidebar {
+        width: 100%;
+        left: calc(-100%);
+    }
+    #sidebar .toggle-btn {
+        left: calc(100% );
+    }
+    #sidebar.active {
+        width: calc(100% - 70px);
     }
 }

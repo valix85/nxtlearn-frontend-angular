@@ -16,7 +16,7 @@ export class GuidaService {
     return this.http.get<Guida>(env.apiUrl + '/guida/' + id)
       .pipe(
         // tap(() => console.log("HTTP request executed"))
-           catchError(this.errorHandler)
+        catchError(this.errorHandler)
         // , catchError(this.errorHandler) //example Observable chain
         // , finalize(() => console.log("first finalize() block executed"))
         // , catchError(this.errorHandler) //example Observable chain
@@ -32,16 +32,16 @@ export class GuidaService {
       } )
       */
 
-      /*
-      // delayed retry
-     , retryWhen(errors => {
-        return errors
-                .pipe(
-                    delayWhen(() => timer(2000)),
-                    tap(() => console.log('retrying...'))
-                );
-        } )
-        */
+        /*
+        // delayed retry
+       , retryWhen(errors => {
+          return errors
+                  .pipe(
+                      delayWhen(() => timer(2000)),
+                      tap(() => console.log('retrying...'))
+                  );
+          } )
+          */
 
         // retry senza il when prova per n volte lo stesso observable di partenza
         , retry(2)
@@ -53,7 +53,7 @@ export class GuidaService {
     return this.http.get<Guida[]>(env.apiUrl + '/guida/');
   }
 
-  getLatest(){
+  getLatest() {
     return this.http.get<Guida[]>(env.apiUrl + '/guida/latest');
   }
 
@@ -99,5 +99,27 @@ export class GuidaService {
     }
   } // end errorHandler
 
+  isIscritto(idGuida: number) {
+    // se la persona è iscritta torna un 200 OK
+    // se la persona non è iscritta torna un 404
+    return this.http.get(env.apiUrl + '/persona/guida/' + idGuida);
+  }
+
+  iscriviUtente(idGuida: number): Observable<any> {
+    return this.http.post(env.apiUrl + '/persona/subscribe',
+      {
+        guidaId: idGuida
+      }
+    );
+  }
+
+  iscriviUtenteDaAdmin(idGuida: number, idUserDaIscrivere: number): Observable<any> {
+    return this.http.post(env.apiUrl + '/persona/subscribe',
+      {
+        utenzaId: idUserDaIscrivere,
+        guidaId: idGuida
+      }
+    );
+  }
 
 }

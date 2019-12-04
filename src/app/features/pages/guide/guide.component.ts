@@ -5,7 +5,7 @@ import { Guida } from 'src/app/core/model/guida';
 @Component({
   selector: 'nxt-guide',
   templateUrl: './guide.component.html',
-  styleUrls: ['./guide.component.css']
+  styleUrls: ['./guide.component.scss']
 })
 export class GuideComponent implements OnInit {
 
