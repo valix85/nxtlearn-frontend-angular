@@ -1,4 +1,5 @@
 export enum PermissionType {
+    AddGuida = 'AddGuida',
     ReadGuida = 'ReadGuida',
     DeleteGuida = 'DeleteGuida',
     UpdateGuida = 'UpdateGuida',

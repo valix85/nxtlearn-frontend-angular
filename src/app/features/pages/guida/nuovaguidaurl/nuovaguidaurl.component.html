@@ -1,3 +1,30 @@
-<p>
-  nuovaguidaurl works!
-</p>
+<div style="min-height:calc(100vh - 58px);" class=" d-flex m-auto col-sm-12 col-md-12 col-lg-8 justify-content-center flex-column align-items-center">
+    <div class="container-fluid bg-white py-4 shadow-lg rounded" id="container-register">
+        <div class="row">
+            <div class="col" id="titolo">
+                <div class="alert alert-success" role="alert" *ngIf="this.flag =='successo'">
+                    Guida inserita correttamente <a [routerLink]="['/guide']" class="alert-link">vista tutte le guide</a>
+                </div>
+                <div class="alert alert-danger" role="alert" *ngIf="this.flag =='fallimento'">
+                    Errore guida non inserita
+                </div>
+                <h1>CREA UNA GUIDA</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="registrationGuidaUrl">
+                    <form method="post" #f="ngForm" (submit)="doGuidaByUrl(f)" id="registrationForm">
+                        <p>Inserisci url:</p>
+                        <div class="form-group">
+                            <input type="text" name="nome" placeholder="http://www.html.it/guide/..." class="form-control" required value="https://www.html.it/guide/adobe-spark/">
+                        </div>
+                        <div class="text-center">
+                          <button type="submit" class="btn btn-primary btn-lg">INSERISCI GUIDA</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
