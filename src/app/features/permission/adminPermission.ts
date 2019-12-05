@@ -9,6 +9,7 @@ export class AdminPermission extends PermissionBase {
             PermissionType.ReadGuida,
             PermissionType.AddCapitolo,
             PermissionType.AddLezione,
+            PermissionType.HandleGuida
         ];
         // console.log(this.autorizzazioni);
     }

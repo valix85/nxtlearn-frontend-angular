@@ -3,5 +3,6 @@ export enum PermissionType {
     DeleteGuida = 'DeleteGuida',
     UpdateGuida = 'UpdateGuida',
     AddCapitolo = 'AddCapitolo',
-    AddLezione = 'AddLezione'
+    AddLezione = 'AddLezione',
+    HandleGuida = 'HandleGuida'
 }

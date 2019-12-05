@@ -7,7 +7,7 @@
     <div class="sidebar--content">
         <div class="sidebar--title" *ngIf="guida">
             <ul class="guida">
-                <li routerLink="/guida/{{guida.id}}">{{guida.nome}}</li>
+                <li routerLink="/guida/{{guida.id}}" class="text-primary">{{guida.nome}}</li>
             </ul>
         </div>
         <ul *ngIf="guida" class="indice">
@@ -17,7 +17,7 @@
                 class="titoloLezione"
                 *ngFor="let lezione of capitolo.lezioni"
                 routerLink="/guida/{{guida.id}}/capitolo/{{capitolo.id}}/lezione/{{lezione.id}}"
-                routerLinkActive="attivo"
+                routerLinkActive="text-primary bold"
                 (click)="toggleSidebar()"
                 >
                 {{getIndice(lezione)+1}} - {{lezione.titolo}}

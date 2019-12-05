@@ -12,7 +12,7 @@
           <button type="button" class="btn btn-primary" (click)="iscriviti(guida.id)" >ISCRIVITI</button>
         </div>
 
-        <div class="box-capitoli">
+        <div class="box-capitoli" *ngIf="guida.capitoli.length>0">
           <h3 class="mb-4">Capitoli</h3>
           <!-- 
             <ngb-accordion 
@@ -70,7 +70,8 @@
 
 
 
-      <div class="my-4 py-4 bg-info border border-primary text-center">
+      <div class="my-4 py-4 bg-info border border-primary text-center" 
+      *nxtIsGranted="let tmp permesso p.HandleGuida loggato authService.isLogged()">
 
       
       <span *nxtIsGranted="let tmp permesso p.AddCapitolo loggato authService.isLogged()"><button class="btn btn-success "  >ADD CAPITOLO</button></span>
