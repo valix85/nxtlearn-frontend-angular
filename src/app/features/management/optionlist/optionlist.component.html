@@ -1,0 +1,18 @@
+<div class="link-list-wrapper">
+    <h3>Operazioni disponibili</h3>
+    <br>
+  <ul class="link-list">
+           <li style="list-style: none" >
+           </li>
+           <li class="  text-primary">
+             <a class="list-item"  (click)="viewSetting('password')">
+                <span><i class="fa fa-arrow-right" aria-hidden="true"></i>  Cambia password</span></a>
+           </li>
+           <li *ngIf="this.typeView!=1" class="  text-primary">
+            <a class="list-item "  *nxtIsGranted="let tmp permesso p.ImpostazioniUtenti loggato authService.isLogged()" (click)="viewSetting('role')"><span><i class="fa fa-arrow-right" aria-hidden="true"></i>  Cambia ruolo</span></a>
+           </li>
+           <li *ngIf="this.typeView!=1" class="  text-primary">
+             <a class="list-item" *nxtIsGranted="let tmp permesso p.ImpostazioniUtenti loggato authService.isLogged()" (click)="viewSetting('guide')"><span><i class="fa fa-arrow-right" aria-hidden="true"></i>  Assegna guide</span></a>
+           </li>
+        </ul>
+     </div>

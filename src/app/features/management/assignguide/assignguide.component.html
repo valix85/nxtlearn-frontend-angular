@@ -1,0 +1,20 @@
+<div>
+    <h5>Guide di {{this.utenzaService.relevantUser.email}}</h5><br>
+    <div class="input-group">
+        <input type="text" class="form-control " placeholder="Cerca una guida" name="toFind" [(ngModel)]="toFind"
+            (input)="viewUsersFiltred($event)">
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <i class="fa fa-search"></i>
+            </div>
+        </div>
+    </div>
+    <div class="funkyradio" *ngFor="let guida of guideToDisplay; let idx of index">
+        <div class="funkyradio-primary" id="inbox"><input type="checkbox" [id]="'guida'+guida.id"><label
+                [for]="'guida'+guida.id">{{guida.nome}}</label></div>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-success btn-sux btn-margin" (click)="assignGuide()">Salva</button>
+
+
+</div>

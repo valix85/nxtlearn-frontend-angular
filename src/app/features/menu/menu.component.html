@@ -97,7 +97,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownLogin" ngbDropdownMenu>
           <a class="dropdown-item" [routerLink]="['/settings']" *ngIf="authService.isLogged()">Impostazioni utente</a>
-          <a class="dropdown-item" [routerLink]="['/utenti']">Gestione utenti</a>
+          <a class="dropdown-item" [routerLink]="['/settings/users']">Gestione utenti</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" [routerLink] *ngIf="authService.isLogged()" (click)="authService.logout()">Logout</a>
         </div>

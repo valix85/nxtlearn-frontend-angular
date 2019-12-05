@@ -19,8 +19,8 @@ export class LoginComponent implements OnInit {
   }
 
   doLogin(form: NgForm): void {
-    //console.log('finire login', form);
-    //let data = new FormData();
+    // console.log('finire login', form);
+    // let data = new FormData();
     /*
     let params = new HttpParams();
     params
@@ -33,11 +33,11 @@ export class LoginComponent implements OnInit {
     };
     */
 
-    //if (form.valid) {
-      //data.append('utente', form.form.value.utente);
-      //data.append('pwd', form.form.value.pwd);
-      //console.log(data);
-      //this.http.post(env.url + '/login', data
+    // if (form.valid) {
+      // data.append('utente', form.form.value.utente);
+      // data.append('pwd', form.form.value.pwd);
+      // console.log(data);
+      // this.http.post(env.url + '/login', data
       /*, {headers: {
         'Content-Type' : 'application/form-data',
         withCredentials: 'true'
@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
       params: params
     }
     */
-   //)
+   // )
 
       this.authService.login(form.form.value.utente, form.form.value.pwd)
       .subscribe(

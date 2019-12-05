@@ -1,0 +1,20 @@
+<div>
+    <br>
+    <div class="container" *nxtIsGranted="let tmp permesso p.ImpostazioniUtenti loggato authService.isLogged()"><!-- A causa dell'entrata nel sito sapendo la route-->
+      <div class="row">
+        <div class="col-sm-4">
+          <nxt-userlist [page]="page" (nextSetting)="viewNext($event)"></nxt-userlist>
+        </div>
+        <div class="col-sm-4" *ngIf="this.progress>0">
+          <nxt-optionlist (lastSetting)="viewOption($event)"></nxt-optionlist>
+        </div>
+        <div class="col-sm-3" *ngIf="this.progress>1" [ngSwitch]="this.setting">
+          <nxt-changepassword *ngSwitchCase="'password'"></nxt-changepassword>
+          <nxt-changerole *ngSwitchCase="'role'"></nxt-changerole>
+          <nxt-assignguide *ngSwitchCase="'guide'"></nxt-assignguide>
+        </div>
+      </div>
+    </div><div style="width:100%;">
+        <div style="width: 50%; margin: 0px auto;text-align:center;"><pagination-controls (pageChange)="givePage($event)"></pagination-controls></div>
+      </div><br><br>
+</div>

@@ -1,0 +1,25 @@
+<div>
+    <h3>Lista Utenti</h3>
+    <br>
+    <div class="form-group container">
+        <div class="input-group">
+            <input type="text" class="form-control " placeholder="Cerca un nome o un email" name="toFind" [(ngModel)]="toFind" (ngModelChange)="p=1" (input)="viewUsersFiltred($event)">
+            <div class="input-group-append">
+                <div class="input-group-text" >
+                    <i class="fa fa-search"></i>
+                </div>
+            </div>
+        </div>
+    <br>
+    <div *ngFor="let user of this.usersToDisplay | paginate: { itemsPerPage:5, currentPage: page}">
+      <div class=" row">
+        <div class="col">
+          <div class="list-group marg" id="list-tab" role="tablist">
+            <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list"
+              (click)="visualizeOptions(user)" role="tab" aria-controls="home">{{user.email}}</a>
+            <!--<a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">{{utente.ruoli}}</a>-->
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

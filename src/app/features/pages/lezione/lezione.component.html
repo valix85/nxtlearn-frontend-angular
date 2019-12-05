@@ -5,7 +5,14 @@
     <div class="autore pl-4">autore: {{lezione?.autore}}</div>
     <div class="data-creazione pl-4">data pubblicazione: {{lezione?.dataCreazione | date:'d MMM y'}}</div>
     <hr class="linea">
+    
     <div *ngIf="lezione.descrizione; else elseBlock">{{lezione.descrizione}}</div>
+    <ng-template #elseBlock>
+        <div class="no-corpo px-4 py-2"></div>
+    </ng-template>
+
+
+    <div *ngIf="lezione.contenuto; else elseBlock" [innerHTML]="lezione.contenuto"></div>
     <ng-template #elseBlock>
         <div class="no-corpo px-4 py-2">dispiace ma la guida non ha ancora un corpo</div>
     </ng-template>

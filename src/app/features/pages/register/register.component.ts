@@ -33,7 +33,7 @@ export class RegisterComponent implements OnInit {
             'Content-Type': 'application/json'
           }
         }).subscribe(
-          (risp)=>{
+          (risp) => {
             console.log(risp);
             alert('Registrato con successo');
             this.router.navigateByUrl('login');
@@ -42,7 +42,7 @@ export class RegisterComponent implements OnInit {
             alert(err.error.data);
             console.log(err);
           }
-        )
+        );
     }
   }
 

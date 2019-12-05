@@ -13,6 +13,7 @@ import { NuovaguidaComponent } from './features/pages/guida/nuovaguida/nuovaguid
 import { SearchComponent } from './features/pages/search/search.component';
 import { LezioneComponent } from './features/pages/lezione/lezione.component';
 import { NuovaguidaurlComponent } from './features/pages/guida/nuovaguidaurl/nuovaguidaurl.component';
+import { UsersettingComponent } from './features/management/usersetting/usersetting.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'logout', component: LogoutComponent},
   {path: 'about', component: AboutComponent},
+  {path: 'settings/users', component: UsersettingComponent, canActivate: [GuidaGuard]},
   {path: 'guide', component: GuideComponent},
   {path: 'guida/search/:testo', component: SearchComponent },
   {path: 'guida/add', component: NuovaguidaComponent, canActivate: [GuidaGuard] },

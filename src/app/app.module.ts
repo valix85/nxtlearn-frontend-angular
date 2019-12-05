@@ -26,6 +26,13 @@ import { SearchComponent } from './features/pages/search/search.component';
 import { GuidaCardComponent } from './features/pages/guida/guida-card/guida-card.component';
 import { LezioneComponent } from './features/pages/lezione/lezione.component';
 import { SidebarComponent } from './features/sidebar/sidebar.component';
+import { UsersettingComponent } from './features/management/usersetting/usersetting.component';
+import { UserlistComponent } from './features/management/userlist/userlist.component';
+import { OptionlistComponent } from './features/management/optionlist/optionlist.component';
+import { ChangepasswordComponent } from './features/management/changepassword/changepassword.component';
+import { ChangeroleComponent } from './features/management/changerole/changerole.component';
+import { AssignguideComponent } from './features/management/assignguide/assignguide.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -48,14 +55,21 @@ import { SidebarComponent } from './features/sidebar/sidebar.component';
     SearchComponent,
     GuidaCardComponent,
     LezioneComponent,
-    SidebarComponent
+    SidebarComponent,
+    UsersettingComponent,
+    UserlistComponent,
+    OptionlistComponent,
+    ChangepasswordComponent,
+    ChangeroleComponent,
+    AssignguideComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ],
   providers: [
     {

@@ -12,7 +12,7 @@ export class SearchComponent implements OnInit {
 
 
   guide: Guida[] = [];
-  searchText: string = '';
+  searchText = '';
 
   constructor(private rotta: ActivatedRoute, private router: Router, private guidaService: GuidaService) { }
 

@@ -9,9 +9,7 @@ import { catchError, finalize, tap, retryWhen, delayWhen, max, retry } from 'rxj
   providedIn: 'root'
 })
 export class GuidaService {
-  getByUrl(url: string) {
-    return this.http.post(env.apiUrl + '/guida/addbyurl', {url});
-  }
+  
 
   constructor(private http: HttpClient) { }
 
@@ -125,4 +123,9 @@ export class GuidaService {
     );
   }
 
+
+  getByUrl(url: string) {
+    console.log(url)
+    return this.http.post(env.apiUrl + '/guida/addbyurl', {url: url});
+  }
 }

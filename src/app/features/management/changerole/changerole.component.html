@@ -1,0 +1,18 @@
+<div>
+    <h4>Riassegna il ruolo a {{this.utenzaService.relevantUser.nome}} {{this.utenzaService.relevantUser.cognome}}</h4>
+    <div ngbDropdown class="btn-group ">
+        <button ngbDropdownToggle type="button" id="roleDropdown" class="btn btn-block btn-light dropdown-toggle"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{this.relevantRole}}
+            <span class="sr-only">Role Dropdown</span>
+        </button>
+        <div ngbDropdownMenu class="dropdown-menu-lg-right" aria-labelledby="roleDropdown">
+            <div *ngFor="let role of roles, let idx = index" value="idx" >
+                <option class="dropdown-item" value="role"(click)="updateRole(role)">{{role}}</option>
+                <div class="dropdown-divider"></div>
+            </div>
+        </div>
+    </div><br><br><br>
+    <div class="text-center">
+    <button type="submit" class="btn btn-success btn-sux btn-margin" (click)="saveRole()" >Salva</button>
+    </div>
+</div>
