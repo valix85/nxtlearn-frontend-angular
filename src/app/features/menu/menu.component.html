@@ -41,14 +41,23 @@
           GUIDA
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown" [ngbCollapse]="!menuGuida">
+          
+            <a class="dropdown-item" [routerLink]="['/guide']">Tutte le guide</a>
+          
           <a class="dropdown-item" [routerLink]="['/guida/add']" 
           *nxtIsGranted="let tmp permesso p.AddGuida loggato authService.isLogged()"
           >Nuova guida</a>
-          <a class="dropdown-item" [routerLink]="['/guide']">Tutte le guide</a>
+
+
+         
 
           <a class="dropdown-item" 
           [routerLink]="['/guida/addbyurl']" *nxtIsGranted="let tmp permesso p.AddGuida loggato authService.isLogged()"    
           >Nuova guida da url</a>
+
+          <a class="dropdown-item" [routerLink]="['/guida/newlezione']" 
+          *nxtIsGranted="let tmp permesso p.AddLezione loggato authService.isLogged()"
+          >Nuova Lezione</a>
 
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" [routerLink]="['/guida/remove']" *ngIf="authService.isLogged()">Cancella guida</a>

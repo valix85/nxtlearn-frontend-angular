@@ -14,6 +14,8 @@ import { GuidaService } from 'src/app/services/guida.service';
 export class NuovaguidaurlComponent implements OnInit {
   formCreaGuidaUrl: Guida = new Guida();
   flag: string;
+  // link: 'https://www.html.it/guide/adobe-spark/';
+
   constructor(private guidaService: GuidaService, private router: Router) { }
   ngOnInit() {
   }

@@ -14,6 +14,7 @@ import { SearchComponent } from './features/pages/search/search.component';
 import { LezioneComponent } from './features/pages/lezione/lezione.component';
 import { NuovaguidaurlComponent } from './features/pages/guida/nuovaguidaurl/nuovaguidaurl.component';
 import { UsersettingComponent } from './features/management/usersetting/usersetting.component';
+import { NuovalezioneComponent } from './features/pages/lezione/nuovalezione/nuovalezione.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -26,6 +27,7 @@ const routes: Routes = [
   {path: 'guida/search/:testo', component: SearchComponent },
   {path: 'guida/add', component: NuovaguidaComponent, canActivate: [GuidaGuard] },
   {path: 'guida/addbyurl', component: NuovaguidaurlComponent, canActivate: [GuidaGuard]},
+  {path: 'guida/newlezione', component: NuovalezioneComponent, canActivate: [GuidaGuard] },
   {path: 'guida/:id', component: GuidaComponent, canActivate: [GuidaGuard] },
   {path: 'guida/:id/capitolo/:idc/lezione/:idl', component: LezioneComponent, canActivate: [GuidaGuard] },
   {path: '**', component: NotFoundComponent}

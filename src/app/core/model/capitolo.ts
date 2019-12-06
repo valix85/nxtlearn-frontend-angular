@@ -3,4 +3,6 @@ export class Capitolo {
     nome: string;
     lezioni: Lezione[];
     id: number;
+    idGuida: number;
+    ordineCapitolo: number;
 }

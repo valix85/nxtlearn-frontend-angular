@@ -66,6 +66,46 @@ export class GuidaService {
     return this.http.get<Guida>(env.apiUrl + '/guida/short/' + id);
   }
 
+
+  isIscritto(idGuida: number) {
+    // se la persona è iscritta torna un 200 OK
+    // se la persona non è iscritta torna un 404
+    return this.http.get(env.apiUrl + '/persona/guida/' + idGuida);
+  }
+
+  iscriviUtente(idGuida: number): Observable<any> {
+    return this.http.post(env.apiUrl + '/persona/subscribe',
+      {
+        guidaId: idGuida
+      }
+    );
+  }
+
+  iscriviUtenteDaAdmin(idGuida: number, idUserDaIscrivere: number): Observable<any> {
+    return this.http.post(env.apiUrl + '/persona/subscribe',
+      {
+        utenzaId: idUserDaIscrivere,
+        guidaId: idGuida
+      }
+    );
+  }
+
+
+  getByUrl(url: string) {
+    // console.log(url);
+    return this.http.post(env.apiUrl + '/guida/addbyurl', {url: url});
+  }
+
+  aggiungiGuida(guida: Guida): Observable<Guida> {
+    return this.http.post<Guida>(env.apiUrl + '/guida', guida, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+  }
+
+
+
   /*GESTIONE ERRORI*/
   // https://blog.angular-university.io/rxjs-error-handling/
   errorHandler(error: any) {
@@ -100,32 +140,4 @@ export class GuidaService {
     }
   } // end errorHandler
 
-  isIscritto(idGuida: number) {
-    // se la persona è iscritta torna un 200 OK
-    // se la persona non è iscritta torna un 404
-    return this.http.get(env.apiUrl + '/persona/guida/' + idGuida);
-  }
-
-  iscriviUtente(idGuida: number): Observable<any> {
-    return this.http.post(env.apiUrl + '/persona/subscribe',
-      {
-        guidaId: idGuida
-      }
-    );
-  }
-
-  iscriviUtenteDaAdmin(idGuida: number, idUserDaIscrivere: number): Observable<any> {
-    return this.http.post(env.apiUrl + '/persona/subscribe',
-      {
-        utenzaId: idUserDaIscrivere,
-        guidaId: idGuida
-      }
-    );
-  }
-
-
-  getByUrl(url: string) {
-    console.log(url)
-    return this.http.post(env.apiUrl + '/guida/addbyurl', {url: url});
-  }
 }

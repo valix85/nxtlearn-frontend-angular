@@ -10,30 +10,26 @@
     <div class="row">
       <div class="col">
         <div class="registration">
-          <form method="post" #f="ngForm" (submit)="doCreate(f)" id="registrationForm">
+          <form method="post" #f="ngForm" (submit)="doCreate(f)" id="CreaGuidaForm">
             <p>Inserisci nome:</p>
             <div class="form-group">
-              <input type="text" name="nome" placeholder="nome" class="form-control"
-               [ngModel]="formCreaGuida.nome" required>
+              <input type="text" name="nome"  class="form-control" [ngModel]="guida.nome" required>
             </div>
             <p>Inserisci descrizione:</p>
             <div class="form-group">
-              <input type="text" name="descrizione" placeholder="descrizione" class="form-control" [ngModel]="formCreaGuida.descrizione" required>
-            </div>
-            <p>Inserisci Livello id:</p>
-            <div class="form-group">
-              <input type="number" name="number" placeholder="number" class="form-control"
-              [ngModel]="formCreaGuida.livelloId" required>
+              <textarea class="form-control" name="descrizione" rows="5" [ngModel] = "guida.descrizione" required></textarea>
             </div>
             <p>Inserisci imagePath:</p>
             <div class="form-group">
-              <input type="text" name="imagePath" placeholder="imagePath" class="form-control" [ngModel]="formCreaGuida.imagePath" required>
+              <input type="text" name="imagePath"  placeholder="imagePath" class="form-control"[ngModel]="guida.image" >
             </div>
-            <p>Inserisci url:</p>
-            <div class="form-group">
-              <input type="text" name="url" placeholder="url" class="form-control" [ngModel]="formCreaGuida.url" required>
-            </div>
-            <br>
+            <div>
+            <p>Livello guida</p>
+            <select name="livello" [ngModel]="livello">
+              <option *ngFor="let liv of livelli" value={{liv.id}}>{{liv.descrizione}}</option>
+              </select>
+              </div>
+              <br>
             <div class="text-center">
               <button type="submit" id="submitCreaGuidaForm" class="btn btn-primary btn-lg" [disabled]="f.invalid"><span
                   class="text-bold">CREA GUIDA</span></button>

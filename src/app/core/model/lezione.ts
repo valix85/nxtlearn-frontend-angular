@@ -7,4 +7,6 @@ export class Lezione {
     allegati: Allegato[];
     id: number;
     dataCreazione: Date;
+    idCapitolo: number;
+    ordineLezione: number;
 }

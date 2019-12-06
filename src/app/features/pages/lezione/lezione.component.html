@@ -1,19 +1,61 @@
 <nxt-sidebar [guida]="guida"></nxt-sidebar>
 <div class="container" *ngIf="lezione">
-    <h1 class="titolo-lezione my-4">{{lezione?.titolo}}</h1>
-    <hr class="linea my-2">
-    <div class="autore pl-4">autore: {{lezione?.autore}}</div>
-    <div class="data-creazione pl-4">data pubblicazione: {{lezione?.dataCreazione | date:'d MMM y'}}</div>
-    <hr class="linea">
-    
+    <div class="row">
+        <div class="col">
+            <h1 class="titolo-lezione my-4">{{lezione?.titolo}}</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <hr class="linea my-2">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="autore pl-4">autore: {{lezione?.autore}}</div>
+            <div class="data-creazione pl-4">data pubblicazione: {{lezione?.dataCreazione | date:'d MMM y'}}</div>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col">
+            <hr class="linea my-2">
+        </div>
+    </div>
+
+
+    <!--
     <div *ngIf="lezione.descrizione; else elseBlock">{{lezione.descrizione}}</div>
     <ng-template #elseBlock>
         <div class="no-corpo px-4 py-2"></div>
     </ng-template>
+-->
 
 
-    <div *ngIf="lezione.contenuto; else elseBlock" [innerHTML]="lezione.contenuto"></div>
-    <ng-template #elseBlock>
-        <div class="no-corpo px-4 py-2">dispiace ma la guida non ha ancora un corpo</div>
-    </ng-template>
+    <div class="row" *ngIf="lezione.descrizione">
+        <div class="col py-4">
+            <div *ngIf="lezione.descrizione">{{lezione.descrizione}}</div>
+            <!--
+                <ng-template #elseBlock>
+                    <div class="no-corpo px-4 py-2"></div>
+                </ng-template>
+            -->
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col py-4">
+            <div *ngIf="lezione.contenuto; else elseBlock2" [innerHTML]="lezione.contenuto"></div>
+            <ng-template #elseBlock2>
+                <div class=" py-2">La guida non ha ancora un contenuto</div>
+            </ng-template>
+        </div>
+    </div>
+
 </div>
