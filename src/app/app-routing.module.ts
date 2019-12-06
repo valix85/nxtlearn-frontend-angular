@@ -15,6 +15,8 @@ import { LezioneComponent } from './features/pages/lezione/lezione.component';
 import { NuovaguidaurlComponent } from './features/pages/guida/nuovaguidaurl/nuovaguidaurl.component';
 import { UsersettingComponent } from './features/management/usersetting/usersetting.component';
 import { NuovalezioneComponent } from './features/pages/lezione/nuovalezione/nuovalezione.component';
+import { MieguideComponent } from './features/pages/guide/mieguide/mieguide.component';
+import { ImpostazioniUtenteComponent } from './features/management/impostazioni-utente/impostazioni-utente.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -22,8 +24,10 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'logout', component: LogoutComponent},
   {path: 'about', component: AboutComponent},
+  {path: 'settings/user', component: ImpostazioniUtenteComponent, canActivate: [GuidaGuard]},
   {path: 'settings/users', component: UsersettingComponent, canActivate: [GuidaGuard]},
   {path: 'guide', component: GuideComponent},
+  {path: 'guide/iscrizioni', component: MieguideComponent, canActivate: [GuidaGuard]},
   {path: 'guida/search/:testo', component: SearchComponent },
   {path: 'guida/add', component: NuovaguidaComponent, canActivate: [GuidaGuard] },
   {path: 'guida/addbyurl', component: NuovaguidaurlComponent, canActivate: [GuidaGuard]},

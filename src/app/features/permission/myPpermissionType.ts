@@ -6,5 +6,6 @@ export enum PermissionType {
     AddCapitolo = 'AddCapitolo',
     AddLezione = 'AddLezione',
     HandleGuida = 'HandleGuida',
-    ImpostazioniUtenti = 'ImpostazioniUtenti'
+    ImpostazioniUtenti = 'ImpostazioniUtenti',
+    ReadMyGuide = 'ReadMyGuide'
 }

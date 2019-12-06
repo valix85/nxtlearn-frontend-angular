@@ -3,28 +3,25 @@ import { LezioneService } from 'src/app/services/lezione.service';
 import { CapitoloService } from 'src/app/services/capitolo.service';
 import { GuidaService } from 'src/app/services/guida.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Lezione } from 'src/app/core/model/lezione';
 import { Capitolo } from 'src/app/core/model/capitolo';
 import { Guida } from 'src/app/core/model/guida';
 import { NgForm } from '@angular/forms';
-
 @Component({
   selector: 'nxt-nuovalezione',
   templateUrl: './nuovalezione.component.html',
   styleUrls: ['./nuovalezione.component.scss']
 })
 export class NuovalezioneComponent implements OnInit {
-
   constructor(
     private lezioneService: LezioneService,
     private guidaService: GuidaService,
     private capitoloService: CapitoloService,
     public authService: AuthService,
-    private router: Router
-    ) { }
-
-
+    private router: Router,
+    private paramRouter: ActivatedRoute
+  ) { }
   lezione: Lezione = new Lezione();
   capitoli: Capitolo[] = [];
   lezioni: Lezione[] = [];
@@ -50,6 +47,15 @@ export class NuovalezioneComponent implements OnInit {
       },
       err => console.log('ERRORE')
     );
+
+    this.paramRouter.queryParams.subscribe(
+      params => {
+        console.log(params);
+        if (params.id) {
+          this.getcapitoli(params as Guida);
+        }
+      }
+    );
   }
   getcapitoli(guida: Guida): void {
     this.active = false;
@@ -60,7 +66,7 @@ export class NuovalezioneComponent implements OnInit {
     this.capitoloService.getAllCapitoliByGuidaId(guida.id).subscribe(
       risp => {
         this.capitoli = risp;
-      //  this.capitolo.nome = "";
+        //  this.capitolo.nome = "";
         console.log(this.capitoli);
         this.nuovaGuida.capitoli = risp;
         console.log(this.nuovaGuida.capitoli);
@@ -109,7 +115,11 @@ export class NuovalezioneComponent implements OnInit {
         // console.log(risp);
         this.idCap = risp.id;
         alert('Registrato con successo');
+        this.lezione.autore = this.setAutore();
         this.active2 = true;
+        this.getcapitoli(this.val);
+        this.creaCapitolo = false;
+
       }
       , (err) => {
         alert(err.error.data);
@@ -132,6 +142,8 @@ export class NuovalezioneComponent implements OnInit {
       (risp) => {
         console.log(risp);
         alert('Registrata con successo');
+        this.lezione.titolo = '';
+        this.lezione.contenuto = '';
       }
       , (err) => {
         alert(err.error.data);
@@ -158,5 +170,4 @@ export class NuovalezioneComponent implements OnInit {
     // controllo per capire se è nuovo o già esistente
     this.getlezione(capitoloPresodaHTML);
   }
-
 }

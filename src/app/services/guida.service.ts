@@ -9,7 +9,6 @@ import { catchError, finalize, tap, retryWhen, delayWhen, max, retry } from 'rxj
   providedIn: 'root'
 })
 export class GuidaService {
-  
 
   constructor(private http: HttpClient) { }
 
@@ -102,6 +101,10 @@ export class GuidaService {
         'Content-Type': 'application/json'
       }
     });
+  }
+
+  getMieGuide() {
+    return this.http.get<Guida[]>(env.apiUrl + '/utenza/myGuides');
   }
 
 

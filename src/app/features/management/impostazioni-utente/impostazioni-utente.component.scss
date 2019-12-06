@@ -1,7 +1,7 @@
 .funkyradio div {
     clear: both;
     overflow: hidden;
-    _width: 150%;
+    width: 150%;
   }
   .funkyradio label {
     width: 100%;
@@ -70,5 +70,8 @@
   .funkyradio-primary input[type="checkbox"]:checked ~ label:before {
     color: #fff;
     background-color: #337AB7;
-    background-color: #444;
+  }
+  .btn-margin{
+    position: absolute;
+    right: -10%;
   }

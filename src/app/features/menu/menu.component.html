@@ -13,6 +13,12 @@
       </li>
 
 
+      <li class="nav-item" 
+      *nxtIsGranted="let tmp permesso p.ReadMyGuide loggato authService.isLogged()">
+          <a class="nav-link" [routerLink]="['/guide','iscrizioni']">le mie guide</a>
+      </li>
+
+
       <li class="nav-item" *nxtIsGranted="let tmp permesso p.ReadGuida loggato authService.isLogged()">
         <a class="nav-link" [routerLink]="['/guida','1']">TEST DIRETTIVA</a>
       </li>
@@ -105,8 +111,20 @@
           <span class="fa fa-user-circle"></span>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownLogin" ngbDropdownMenu>
-          <a class="dropdown-item" [routerLink]="['/settings']" *ngIf="authService.isLogged()">Impostazioni utente</a>
-          <a class="dropdown-item" [routerLink]="['/settings/users']">Gestione utenti</a>
+
+
+
+          <a class="dropdown-item" [routerLink]="['/settings/user']" *ngIf="authService.isLogged()">Impostazioni utente</a>
+
+
+
+          <a class="dropdown-item" [routerLink]="['/settings/users']" 
+          *nxtIsGranted="let tmp permesso p.ImpostazioniUtenti loggato authService.isLogged()"
+          >Gestione utenti</a>
+
+
+
+
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" [routerLink] *ngIf="authService.isLogged()" (click)="authService.logout()">Logout</a>
         </div>

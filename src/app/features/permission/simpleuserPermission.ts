@@ -5,6 +5,9 @@ export class SimpleUserPermission extends PermissionBase {
 
     constructor() {
         super();
-        this.autorizzazioni = [ ];
+        this.autorizzazioni = [
+            PermissionType.ReadGuida,
+            PermissionType.ReadMyGuide
+        ];
     }
 }

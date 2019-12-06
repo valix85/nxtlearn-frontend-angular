@@ -1,0 +1,17 @@
+<div id="box-guide">
+  <section class="pb-5">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h2 *ngIf="this.mieGuide.length!=0" class="section-title text-center ">Le mie guide</h2>
+          <h2 *ngIf="this.mieGuide.length==0" class="section-title text-center ">Non sei iscritto a nessuna guida!</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let guida of this.mieGuide | slice:0:9">
+          <nxt-guida-card [item]="guida"></nxt-guida-card>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

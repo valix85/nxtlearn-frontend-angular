@@ -34,6 +34,8 @@ import { ChangeroleComponent } from './features/management/changerole/changerole
 import { AssignguideComponent } from './features/management/assignguide/assignguide.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NuovalezioneComponent } from './features/pages/lezione/nuovalezione/nuovalezione.component';
+import { MieguideComponent } from './features/pages/guide/mieguide/mieguide.component';
+import { ImpostazioniUtenteComponent } from './features/management/impostazioni-utente/impostazioni-utente.component';
 
 
 @NgModule({
@@ -63,7 +65,9 @@ import { NuovalezioneComponent } from './features/pages/lezione/nuovalezione/nuo
     ChangepasswordComponent,
     ChangeroleComponent,
     AssignguideComponent,
-    NuovalezioneComponent
+    NuovalezioneComponent,
+    MieguideComponent,
+    ImpostazioniUtenteComponent
   ],
   imports: [
     BrowserModule,

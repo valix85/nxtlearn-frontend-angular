@@ -12,6 +12,11 @@
           <button type="button" class="btn btn-primary" (click)="iscriviti(guida.id)" >ISCRIVITI</button>
         </div>
 
+        
+        <div *ngIf="authService.isLogged() && iscritto && router.url.startsWith('/guide')" class="text-center my-4">
+            <button type="button" class="btn btn-primary" routerLink="/guida/{{guida.id}}"  >VAI ALLA GUIDA</button>
+          </div>
+
         <div class="box-capitoli" *ngIf="guida.capitoli.length>0">
           <h3 class="mb-4">Capitoli</h3>
           <!-- 
@@ -44,7 +49,8 @@
             <div class="accordion">
             <div *ngFor="let capitolo of guida.capitoli;let i= index" class="accordion--header" >
               <div class="accordion--header--title">
-              <h4 (click)="isCollapsed[i] = !isCollapsed[i]" ><i
+              <h4 (click)="isCollapsed[i] = !isCollapsed[i]" class="pull-left" >
+                <i
                 *ngIf="!isCollapsed[i]"
                 class="fa fa-arrow-circle-right" 
                 aria-hidden="true"></i>
@@ -54,6 +60,11 @@
                 aria-hidden="true"></i>
                 {{capitolo.nome}}
               </h4>
+              <span *nxtIsGranted="let tmp permesso p.AddCapitolo loggato authService.isLogged()" class="pull-right">
+                  <button class="btn btn-success  " *nxtIsGranted="let tmp permesso p.AddLezione loggato authService.isLogged()" >ADD LEZIONE</button>
+              </span>
+              <div class="clearfix"></div>
+
               </div>
 
             <ul class="indice--capitolo--content accordion--content my-0" >
@@ -74,9 +85,9 @@
       *nxtIsGranted="let tmp permesso p.HandleGuida loggato authService.isLogged()">
 
       
-      <span *nxtIsGranted="let tmp permesso p.AddCapitolo loggato authService.isLogged()"><button class="btn btn-success "  >ADD CAPITOLO</button></span>
-      <button class="btn btn-success  " *nxtIsGranted="let tmp permesso p.AddLezione loggato authService.isLogged()" >ADD LEZIONE</button>
-
+      <span *nxtIsGranted="let tmp permesso p.AddCapitolo loggato authService.isLogged()">
+        <button class="btn btn-success" [routerLink]="['/guida/newlezione']" [queryParams]="guida"  >ADD CAPITOLO</button>      
+      </span>
       <div class="clearfix"></div>
     </div>
 

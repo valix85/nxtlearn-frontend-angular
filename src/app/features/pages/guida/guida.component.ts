@@ -19,7 +19,7 @@ export class GuidaComponent implements OnInit, OnChanges {
 
   p = PermissionType;
 
-  constructor(public authService: AuthService, private router: Router, private route: ActivatedRoute, private guidaService: GuidaService ) { }
+  constructor(public authService: AuthService, public router: Router, private route: ActivatedRoute, private guidaService: GuidaService ) { }
 
   iscritto: boolean = false;
 
