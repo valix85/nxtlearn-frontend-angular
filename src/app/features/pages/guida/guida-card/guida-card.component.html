@@ -5,7 +5,7 @@
         <div class="card-body text-center">
           <p><img class=" img-fluid" [src]="item.image"
               alt="card image"></p>
-          <h4 class="card-title">{{item.nome}}</h4>
+          <h4 class="card-title">{{item.nome | uppercase}}</h4>
           <p class="card-text">Livello: {{item.livello.descrizione}}</p>
           <span class="btn btn-outline-primary">SCOPRI DI PI&Uacute;</span>
         </div>
@@ -14,7 +14,7 @@
     <div class="backside">
       <div class="card">
         <div class="card-body text-center mt-4">
-          <h4 class="card-title">{{item.nome}}</h4>
+          <h4 class="card-title">{{item.nome | uppercase}}</h4>
           <p class="card-text">{{item.descrizione | slice:0:100}}... <br><br>
             <a [routerLink]="['/guida', item.id]" class="btn btn-primary">Vai alla guida</a>
             <!--

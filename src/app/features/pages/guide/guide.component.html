@@ -1,5 +1,27 @@
+<!--
 <div class="container">
-
   <nxt-guida *ngFor="let item of guide" [value]="item" ></nxt-guida>
-  
+</div>
+-->
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col">
+      <div *ngFor="let guida of guide">
+        <div *ngIf="guida">
+          <a routerLink="/guida/{{guida.id}}" class="link text-primary" >
+            <h1 class="nomeGuida">{{guida.nome}}</h1>
+          </a>
+          <p class="descrizioneGuida pull-left">{{guida.descrizione}}</p>
+          <div>
+          <div class="text-muted"> Livello: {{guida.livello?.descrizione}}</div>          
+          <div *ngIf="router.url.startsWith('/guide')" class="text-center mb-4 pull-right">
+            <button type="button" class="btn btn-primary" routerLink="/guida/{{guida.id}}">VAI ALLA GUIDA</button>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

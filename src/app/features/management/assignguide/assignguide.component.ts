@@ -10,10 +10,10 @@ import { environment as env } from './../../../../environments/environment';
   templateUrl: './assignguide.component.html',
   styleUrls: ['./assignguide.component.scss']
 })
-export class AssignguideComponent implements OnInit {
-  guideToDisplay: Guida[] = [];
+export class AssignguideComponent implements OnInit {guideToDisplay: Guida[] = [];
   guide: Guida[] = [];
   toFind = '';
+  myguides: Guida[];
   constructor(private guidaService: GuidaService, public utenzaService: UtenzaService, private http: HttpClient) {
   }
   ngOnInit() {
@@ -28,9 +28,7 @@ export class AssignguideComponent implements OnInit {
       });
     this.utenzaService.initUsers().then(resolve => this.checkGuideAlreadySubscribed());
   }
-
   assignGuide() { // mando le guide al server
-    console.log('assignGuide');
     let replacingGuide: number[] = [];
     this.guideToDisplay.forEach(guida => {
       const checkbox =  document.querySelector('#guida' + guida.id) as HTMLInputElement;
@@ -39,7 +37,7 @@ export class AssignguideComponent implements OnInit {
         replacingGuide.push(guida.id);
       }
     });
-    console.log('inviando dati al server', replacingGuide);
+    // console.log('inviando dati al server', replacingGuide);
     this.utenzaService.updateGuides(replacingGuide).subscribe(
       risp => {
         alert('Guide salvate!');
@@ -53,14 +51,17 @@ export class AssignguideComponent implements OnInit {
     const guideChecked = new Promise<Guida[]>((resolve, reject) => {
       assignGuide.http.post<Guida[]>(env.apiUrl + '/utenza/myGuides', assignGuide.utenzaService.relevantUser.email).subscribe(
         risp => {
-          console.log('Guide di risposta: ', risp);
+          // console.log('Guide di risposta: ', risp);
+          this.myguides = risp;
           resolve(risp);
         },
         err => { console.log('ERRORE NELLA POST di myGuides', err); reject(err); }
       );
     }).then(resolve => resolve.forEach(guida => {
+      if(this.guideToDisplay.map(g=>g.id).includes(guida.id)){
+        //controllo se la guide che faccio checkare sono tra quelle visualizzate
       const checkbox = document.querySelector('#guida' + guida.id) as HTMLInputElement;
-      checkbox.checked = true;
+      checkbox.checked = true;}
     }));
   }
   viewUsersFiltred() {
@@ -71,5 +72,6 @@ export class AssignguideComponent implements OnInit {
         return g.nome.toLowerCase().includes(searching) || g.descrizione.toLowerCase().includes(searching);
       });
     } else { this.guideToDisplay = this.guide }
+    this.checkGuideAlreadySubscribed();
   }
-}
+}// end class

@@ -9,15 +9,23 @@
     <div class="row">
       <div class="col">
         <div class="guida">
-          <form method="post" #f="ngForm"q id="CreacapitoliForm"  >
-            <p>Guida</p>
-            <div>
-              <select [ngModel]="val" name="select1" (ngModelChange)="setGuida($event)" class="form-control">
-                <option *ngFor="let guida of guide" [ngValue]="guida">{{guida.id}}-{{guida.nome}}</option>
-              </select>
+          <form method="post" #f="ngForm" q id="CreacapitoliForm">
+            <div *ngIf="guidaAttiva" class="my-2">
+              <label>Guida</label>
+              <div *ngIf=!nuovaRotta>
+                <select [ngModel]="guida" name="select1" (ngModelChange)="setGuida($event)" class="form-control">
+                  <option *ngFor="let guida of guide" [ngValue]="guida">{{guida.id}}-{{guida.nome}}</option>
+                </select>
+              </div>
+              <div *ngIf=nuovaRotta name="guida" class="form-control">
+                <p>{{guida.id}}-{{guida.nome}}</p>
+
+              </div>
+
             </div>
-            <div *ngIf="active">
-              <p>Capitolo</p>
+
+            <div *ngIf="active" class="my-2">
+              <label>Capitolo</label>
               <div *ngIf="capitoli.length > 0">
                 <select [ngModel]="capitolo" name="assegnoCapitolo" *ngIf="!creaCapitolo" class="form-control"
                   (ngModelChange)="setCapitolo($event)">
@@ -25,40 +33,44 @@
                   <option [ngValue]="capitoloNuovo">Nuovo capitolo</option>
                 </select>
               </div>
-              <div *ngIf="capitoli.length === 0 || creaCapitolo">
+
+              <div *ngIf="(capitoli.length === 0 || creaCapitolo) && guidaAttiva  ">
                 <!-- SOLO alla creazione della nuova guida -->
                 <div>
                   <input type="text" name="cap" [ngModel]="capitolo?.nome" placeholder="crea capitolo"
                     class="form-control" required>
                 </div>
-                <div class="text-center">
-                  <button type="button" *ngIf="!active2" (click)="salvaCapitolo(f)" (ngModelChange)="setCapitolo($event)"
-                    id="submitCreaCapitolo" class="btn btn-primary btn-lg" [disabled]="f.invalid"><span
-                      class="text-bold">CREA CAPITOLO</span></button>
+                <div class="text-center mt-2">
+                  <button type="button" *ngIf="!active2" (click)="salvaCapitolo(f)"
+                    (ngModelChange)="setCapitolo($event)" id="submitCreaCapitolo" class="btn btn-primary btn-lg"
+                    [disabled]="f.invalid"><span class="text-bold">CREA CAPITOLO</span></button>
                 </div>
               </div>
-            </div>
-            <div *ngIf="active2" id = "formLezione">
-              <p>Autore:</p>
-              <div class="form-group">
-                <input type="text" name="autore"   class="form-control" [ngModel]="lezione.autore">
+              <div  name="nomeCap" *ngIf = "!guidaAttiva">
+                <p >{{nomeCap}}</p>
               </div>
-              <p>Titolo lezione:</p>
+            </div>
+            <div *ngIf="active2" id="formLezione">
+              <label>Autore:</label>
               <div class="form-group">
-                <input type="text" name="titolo" placeholder="nome"  class="form-control" [(ngModel)]="lezione.titolo"
+                <input type="text" name="autore" class="form-control" [ngModel]="lezione.autore">
+              </div>
+              <label>Titolo lezione:</label>
+              <div class="form-group">
+                <input type="text" name="titolo" placeholder="nome" class="form-control" [(ngModel)]="lezione.titolo"
                   required>
               </div>
-              <p>Contenuto lezione:</p>
+              <label>Contenuto lezione:</label>
               <div class="form-group">
-                <textarea class="form-control" name="contenuto"   rows="10" required
+                <textarea class="form-control" name="contenuto" rows="10" required
                   [(ngModel)]="lezione.contenuto"></textarea>
               </div>
-              <div class="text-center mt-3" >
-                  <button type="button" (click)="salvaLezione(f)"  id="submitCreaGuidaForm" class="btn btn-primary btn-lg" [disabled]="f.invalid"><span
-                      class="text-bold">CREA LEZIONE</span></button>
-                </div>
+              <div class="text-center mt-2">
+                <button type="button" (click)="salvaLezione(f)" id="submitCreaGuidaForm" class="btn btn-primary btn-lg"
+                  [disabled]="f.invalid"><span class="text-bold">CREA LEZIONE</span></button>
+              </div>
             </div>
-            
+
           </form>
         </div>
       </div>
