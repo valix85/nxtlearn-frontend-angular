@@ -13,15 +13,15 @@ export class PermissionsFactory {
     switch (role) {
       case 'ADMIN':
         instance = new AdminPermission();
-        console.log('ADMIN');
+        // console.log('ADMIN');
         break;
       case 'SIMPLEUSER':
         instance = new SimpleUserPermission();
-        console.log('SIMPLEUSER');
+        // console.log('SIMPLEUSER');
         break;
       default:
         instance = new UnknownPermission();
-        console.log('DEFAULT');
+        // console.log('DEFAULT');
         break;
     }
     return instance;

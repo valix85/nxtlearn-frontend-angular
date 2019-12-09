@@ -36,6 +36,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { NuovalezioneComponent } from './features/pages/lezione/nuovalezione/nuovalezione.component';
 import { MieguideComponent } from './features/pages/guide/mieguide/mieguide.component';
 import { ImpostazioniUtenteComponent } from './features/management/impostazioni-utente/impostazioni-utente.component';
+import { SafePipe } from './core/pipe/safe.pipe';
 
 
 @NgModule({
@@ -67,7 +68,8 @@ import { ImpostazioniUtenteComponent } from './features/management/impostazioni-
     AssignguideComponent,
     NuovalezioneComponent,
     MieguideComponent,
-    ImpostazioniUtenteComponent
+    ImpostazioniUtenteComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule,

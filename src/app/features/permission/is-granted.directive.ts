@@ -23,24 +23,24 @@ export class IsGrantedDirective implements OnInit, OnChanges, OnDestroy {
     private permissionManagerService: PermissionManagerService,
     private authService: AuthService
   ) {
-    console.log('Direttiva custom invocata');
+    // console.log('Direttiva custom invocata');
     // console.log(this.permesso);
     // console.log(this.ruolo);
     // console.log(this.numero);
   }
 
   ngOnInit() {
-    console.log('Direttiva custom init');
+    // console.log('Direttiva custom init');
     // console.log(this.permesso);
     // console.log(this.ruolo);
     // console.log(this.numero);
   }
 
   ngOnChanges() {
-    console.log('Direttiva custom changes');
+    // console.log('Direttiva custom changes');
     // console.log(this.permesso);
     // console.log(this.ruolo);
-    console.log(this.loggato);
+    // console.log(this.loggato);
     this.nxtIsGranted();
   }
 
@@ -55,11 +55,11 @@ export class IsGrantedDirective implements OnInit, OnChanges, OnDestroy {
     if (this.loggato && !this.activeView) {
       // todo fare controllo del permesso richiesto per la funzionalità
       if (this.permissionManagerService.isGranted(this.permesso, this.authService.getRoleAuth())) {
-        console.log('ho il permesso');
+        // console.log('ho il permesso');
         this.activeView = true;
         this.viewContainer.createEmbeddedView(this.templateRef);
       } else {
-        console.warn('non ho il permesso');
+        // console.warn('non ho il permesso');
       }
     } else if (!this.loggato && this.activeView) {
       this.activeView = false;

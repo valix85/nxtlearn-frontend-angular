@@ -19,8 +19,8 @@ export class SidebarComponent implements OnInit, OnChanges {
       this.guida.capitoli.forEach(
         cap => cap.lezioni.forEach(lezione => {
           this.indice.push(lezione);
+          // console.log('indice', this.indice);
         }));
-      console.log('indice', this.indice);
     }
   }
   toggleSidebar() {

@@ -1,5 +1,7 @@
-<nxt-sidebar [guida]="guida"></nxt-sidebar>
+
 <div class="container" *ngIf="lezione">
+        <nxt-sidebar [guida]="guida"></nxt-sidebar>
+
     <div class="row">
         <div class="col">
             <h1 class="titolo-lezione my-4">{{lezione?.titolo}}</h1>
@@ -51,11 +53,10 @@
 
     <div class="row">
         <div class="col py-4">
-            <div *ngIf="lezione.contenuto; else elseBlock2" [innerHTML]="lezione.contenuto"></div>
+            <div *ngIf="lezione.contenuto; else elseBlock2" [innerHTML]="lezione.contenuto | safe: 'html'"></div>
             <ng-template #elseBlock2>
                 <div class=" py-2">La guida non ha ancora un contenuto</div>
             </ng-template>
         </div>
-    </div>
-
+    </div>    
 </div>

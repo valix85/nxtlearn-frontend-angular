@@ -1,14 +1,16 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Lezione } from 'src/app/core/model/lezione';
 import { LezioneService } from 'src/app/services/lezione.service';
 import { GuidaService } from 'src/app/services/guida.service';
 import { Guida } from 'src/app/core/model/guida';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'nxt-lezione',
   templateUrl: './lezione.component.html',
-  styleUrls: ['./lezione.component.scss']
+  styleUrls: ['./lezione.component.scss'],
+  encapsulation: ViewEncapsulation.None , // per applicare il mio css a un HTML dinamico
 })
 export class LezioneComponent implements OnInit {
 
@@ -39,7 +41,8 @@ export class LezioneComponent implements OnInit {
     this.lezioneService.get(id, idc, idl).subscribe(
       risp => {
         this.lezione = risp;
-        console.log(this.lezione);
+        // this.lezione.contenuto = this.sanitizer.bypassSecurityTrustHtml(risp.contenuto) + '';
+        // console.log(this.lezione);
       },
       err => console.error('ERRORE')
     );
