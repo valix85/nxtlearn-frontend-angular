@@ -39,9 +39,9 @@ export class NuovalezioneComponent implements OnInit {
   idCap: number;
   // val: Guida;
   capitoloNuovo: Capitolo = new Capitolo();
-  guida: Guida = new Guida()
+  guida: Guida;
 
-  nomeCap : string;
+  nomeCap: string;
 
 
   nuovaRotta = false;
@@ -56,7 +56,7 @@ export class NuovalezioneComponent implements OnInit {
     this.guidaService.getAll().subscribe(
       risp => {
         this.guide = risp;
-        console.log(this.guide);
+        // console.log(this.guide);
       },
       err => console.log('ERRORE')
     );
@@ -65,26 +65,25 @@ export class NuovalezioneComponent implements OnInit {
     this.paramRouter.queryParams.subscribe(
       params => {
 
-        console.log(params)
+        // console.log(params);
         if (params.image) {
           this.nuovaRotta = true;
 
-          this.guida = (params as Guida)
+          this.guida = (params as Guida);
 
-          console.log(this.guida)
-          this.getcapitoli(params as Guida)
+          // console.log(this.guida);
+          this.getcapitoli(params as Guida);
 
-        }
-        else if (!params.image && params.id) {
+        } else if (!params.image && params.id) {
           this.active = true;
           this.active2 = true;
-          this.capitolo = (params as Capitolo)
-          this.getlezionebyRotta(this.capitolo)
+          this.capitolo = (params as Capitolo);
+          this.getlezionebyRotta(this.capitolo);
 
         }
 
       }
-    )
+    );
   }
   getcapitoli(guida: Guida): void {
     this.active = false;
@@ -96,9 +95,9 @@ export class NuovalezioneComponent implements OnInit {
       risp => {
         this.capitoli = risp;
         //  this.capitolo.nome = "";
-        console.log(this.capitoli);
+        // console.log(this.capitoli);
         this.nuovaGuida.capitoli = risp;
-        console.log(this.nuovaGuida.capitoli);
+        // console.log(this.nuovaGuida.capitoli);
         if (risp != null) {
           this.active = true;
         } else {
@@ -111,7 +110,7 @@ export class NuovalezioneComponent implements OnInit {
 
 
   getlezione(capitolo: Capitolo): void {
-    console.log("CAPITOLO", capitolo)
+    // console.log('CAPITOLO', capitolo);
     if (capitolo.id != null) {
       this.lezioneService.getAllLezioniByCapitoloId(capitolo.id).subscribe(
         risp => {
@@ -135,13 +134,13 @@ export class NuovalezioneComponent implements OnInit {
   }
 
   getlezionebyRotta(capitolo: Capitolo): void {
-  
+
     this.guidaAttiva = false;
 
-    this.nomeCap = capitolo.nome
+    this.nomeCap = capitolo.nome;
 
 
-    console.log("CAPITOLO", capitolo)
+    // console.log('CAPITOLO', capitolo);
 
     if (capitolo.id != null) {
       this.lezioneService.getAllLezioniByCapitoloId(capitolo.id).subscribe(
@@ -165,14 +164,14 @@ export class NuovalezioneComponent implements OnInit {
 
   salvaCapitolo(form: NgForm) {
 
-    console.log(form);
+    // console.log(form);
 
     this.capitoloNuovo.nome = form.form.value.cap;
     this.capitoloNuovo.lezioni = [];
     this.capitoloNuovo.ordineCapitolo = -1;
-   
-      this.capitoloNuovo.idGuida = this.guida.id;
-    
+
+    this.capitoloNuovo.idGuida = this.guida.id;
+
     this.capitoloService.aggiungiCapitolo(this.capitoloNuovo).subscribe(
       (risp) => {
         // console.log(risp);
@@ -181,8 +180,8 @@ export class NuovalezioneComponent implements OnInit {
         this.lezione.autore = this.setAutore();
         this.active2 = true;
 
-          this.getcapitoli(this.guida);
-        
+        this.getcapitoli(this.guida);
+
         this.creaCapitolo = false;
 
       }
@@ -202,10 +201,10 @@ export class NuovalezioneComponent implements OnInit {
       this.lezione.idCapitolo = this.idCap;
     }
     this.lezione.ordineLezione = -1;
-    console.log('lezione da inviare: ', this.lezione);
+    // console.log('lezione da inviare: ', this.lezione);
     this.lezioneService.aggiungiLezione(this.lezione).subscribe(
       (risp) => {
-        console.log(risp);
+        // console.log(risp);
         alert('Registrata con successo');
         this.lezione.titolo = '';
         this.lezione.contenuto = '';
@@ -226,13 +225,13 @@ export class NuovalezioneComponent implements OnInit {
     // console.log(val1)
 
     this.guida = guidaPresodaHTML;
-    console.log(this.guida);
+    // console.log(this.guida);
     this.getcapitoli(guidaPresodaHTML);
   }
   setCapitolo(capitoloPresodaHTML: Capitolo) {
-    console.log(capitoloPresodaHTML);
+    // console.log(capitoloPresodaHTML);
     this.capitolo = capitoloPresodaHTML;
-    console.log('CAPITOLO SCELTO', this.capitolo);
+    // console.log('CAPITOLO SCELTO', this.capitolo);
     // controllo per capire se è nuovo o già esistente
     this.getlezione(capitoloPresodaHTML);
   }

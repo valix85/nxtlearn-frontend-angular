@@ -14,6 +14,7 @@
               <label>Guida</label>
               <div *ngIf=!nuovaRotta>
                 <select [ngModel]="guida" name="select1" (ngModelChange)="setGuida($event)" class="form-control">
+                  <option [ngValue]="undefined" disabled>Seleziona una guida</option>
                   <option *ngFor="let guida of guide" [ngValue]="guida">{{guida.id}}-{{guida.nome}}</option>
                 </select>
               </div>
@@ -29,6 +30,7 @@
               <div *ngIf="capitoli.length > 0">
                 <select [ngModel]="capitolo" name="assegnoCapitolo" *ngIf="!creaCapitolo" class="form-control"
                   (ngModelChange)="setCapitolo($event)">
+                  <option [ngValue]="undefined" disabled>Seleziona un capitolo</option>
                   <option *ngFor="let cap of capitoli" [ngValue]="cap">{{cap.ordineCapitolo}}-{{cap.nome}}</option>
                   <option [ngValue]="capitoloNuovo">Nuovo capitolo</option>
                 </select>
